@@ -14,7 +14,7 @@ Choose one of 12 countries. Govern for 28 half-years from 2027 H1 to 2040 H2. Ea
 - Six global supply/demand markets respond to government projects, export restrictions, corporate supply assets and player investment.
 - NPC governments invest according to needs and strategic priorities. Firms expand, lobby, defer assets and reprice actual contracts.
 - Every half-year has an itemised capital ledger, domestic and world consequences, delayed completion messages and optional detail.
-- Quick play, saved campaigns, deterministic same-world replay, previous-run comparison, share text and downloadable SVG outcome cards.
+- Quick play, saved campaigns, deterministic same-world replay, previous-run comparison, share text and previewable PNG outcome cards (SVG fallback).
 - Multiple coexisting legacies based on the whole campaign, including research without industrial capture, profitable interdependence, corporate capture and failed substitution.
 
 ## Run and verify
