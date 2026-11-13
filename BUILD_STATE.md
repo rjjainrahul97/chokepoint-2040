@@ -50,3 +50,11 @@ Free, phone-first strategy game at a publicly accessible GitHub Pages URL, playa
 - User action: Settings > Pages > Deploy from branch > main > /(root) > Save.
 - Next verification: check the public game URL, start a run, advance one turn, and complete an entire 28-turn campaign; update status to COMPLETE only after external readback.
 - Rollback: revert this commit via GitHub history; retained prior commit 3c4bf9f15c64c7df9c8e545f5e2afd0609ed1ea8.
+
+## Deployment verification 2026-11-13
+- [SRC] Added root .nojekyll in commit 9ada835f52b2bacb009f1725d25030b1e0c1ca5f to bypass Jekyll processing of static site and trigger Pages.
+- [SRC] GitHub Actions workflow 43428116153 (pages build and deployment) completed SUCCESS; both build and deployment jobs completed successfully.
+- [SRC] Workflow URL: https://github.com/rjjainrahul97/chokepoint-2040/actions/runs/43428116153.
+- [GAP] External HTTP fetch of https://rjjainrahul97.github.io/chokepoint-2040/ was unavailable from this runtime; live user-browser smoke test not yet observed.
+- [INF] Publishing infrastructure is deployed. User should open site in mobile browser and verify home, first turn, and end state.
+- Acceptance: repository source PASS; GitHub Pages deployment PASS; HTTP/user-path confirmation PENDING.
