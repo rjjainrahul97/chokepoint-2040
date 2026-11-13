@@ -1,7 +1,7 @@
 # Build checkpoint - CHOKEPOINT 2040
 
 Build ID: CP-2040-20261113
-Status: PARTIAL (source uploaded and remotely verified; GitHub Pages activation and live browser check pending)
+Status: PARTIAL (local verified; GitHub upload/publishing in progress)
 
 ## Goal
 Free, phone-first strategy game at a publicly accessible GitHub Pages URL, playable in approximately 5-7 minutes.
@@ -41,20 +41,11 @@ Free, phone-first strategy game at a publicly accessible GitHub Pages URL, playa
 - Simplified and fictional strategic model. Scores are game assumptions, not forecasts; corporate names are fictional composites.
 - Current code has no external runtime dependencies.
 
-## 2026-11-13 published-source checkpoint
-- [SRC] Public repository: https://github.com/rjjainrahul97/chokepoint-2040 (main; writable).
-- [SRC] Commit containing game: 4f7a2582ccdec0a5c5b35771a85e61303157bdd3. Remote index.html, src/engine.js, and src/style.css fetched successfully after the push.
-- [SRC] Original MIT licence preserved; no existing unrelated files overwritten.
-- [SRC] Local npm test: 5/5 passing; source syntax checks passed.
-- [GAP] GitHub Pages has not been enabled or verified from the live site. GitHub connector exposes repository writes but no Pages settings mutation; a read-only Pages probe was rejected as unsupported.
-- User action: Settings > Pages > Deploy from branch > main > /(root) > Save.
-- Next verification: check the public game URL, start a run, advance one turn, and complete an entire 28-turn campaign; update status to COMPLETE only after external readback.
-- Rollback: revert this commit via GitHub history; retained prior commit 3c4bf9f15c64c7df9c8e545f5e2afd0609ed1ea8.
-
-## Deployment verification 2026-11-13
-- [SRC] Added root .nojekyll in commit 9ada835f52b2bacb009f1725d25030b1e0c1ca5f to bypass Jekyll processing of static site and trigger Pages.
-- [SRC] GitHub Actions workflow 43428116153 (pages build and deployment) completed SUCCESS; both build and deployment jobs completed successfully.
-- [SRC] Workflow URL: https://github.com/rjjainrahul97/chokepoint-2040/actions/runs/43428116153.
-- [GAP] External HTTP fetch of https://rjjainrahul97.github.io/chokepoint-2040/ was unavailable from this runtime; live user-browser smoke test not yet observed.
-- [INF] Publishing infrastructure is deployed. User should open site in mobile browser and verify home, first turn, and end state.
-- Acceptance: repository source PASS; GitHub Pages deployment PASS; HTTP/user-path confirmation PENDING.
+## V0.2 usability and state update (13 November 2026)
+- Goal: clarify two calendar quarters per turn, cash deductions/replenishment, and how prosperity, value capture, resilience and public mandate influence play. Make country and company responses visible with positive/neutral/negative cues.
+- [SRC] Local JS syntax checks and 9 engine test cases PASS, including 12 countries x 3 policies through 2040, capital conservation for all 28 turns, different global market pressures by player choices, bot country reactions, and market state sanity across multiple seeds.
+- [SRC] Headless Chromium (system executable) completed a mobile 390x844 flow using in-memory HTML/CSS/ES module injection: country selection, India first decision, after-action card, cash ledger, all 28 choices, end state; 0 JavaScript page errors. Direct local HTTP navigation from the test browser was blocked by runtime policy; inline injection served as narrow runtime smoke test.
+- Design: version 2 simulation state includes persistent shared global pressure, non-playable governments and delayed foreign capacity investments. Each turn shows compact national and global outcome headline, sign/icon/colour impact cues, reconciled capital equation and expandable causal details.
+- [RISK] Generated non-playable country policies are deterministic illustrative game rules, not predictions. Source v1 save files are retained under their original storage key but not loaded by v2; users start fresh with richer simulation state.
+- [GAP] Source not yet committed and latest live Pages run not yet verified for this version. Next: atomic push, remote readback, Pages deployment and public browser smoke test.
+- Rollback: previous verified GitHub commit before V0.2; revert V0.2 via GitHub history if regression.

@@ -57,3 +57,19 @@ No GitHub Actions workflow is necessary.
 ## Licence
 
 MIT. This is a small educational toy.
+
+
+## Version 0.2: explain what actually happened
+
+- One player choice per **half-year** (two calendar quarters); 28 turns from 2027 H1 to 2040 H2.
+- The next turn shows a compact **After action** report, naming the player's global ripple, an independent country move, domestic score changes, and a reconciled capital equation. Expand it for corporate responses and delayed project completions.
+- Each non-playable government has its own capability starting point, country-specific investment priorities and deterministic motives. Their export restrictions, trade corridors, standards competition and infrastructure investments affect shared global supply pressure and sometimes the player's capabilities.
+- Production capacity started by rival governments comes online after three half-years; global pressure eases or rises with government actions, with gradual decay. Your production completions and trade deals can also ease pressure, while emergency stockpiling marginally tightens it.
+- Positive, neutral and negative effects use icon + text + colour (never colour alone).
+- In-game definitions explain prosperity, domestic value capture, resilience, public mandate, alliances, corporate power and investable capital.
+- Capital ledger: `opening - decision cost - corporate fees + received income = closing`. Standard income is 3, +1 when Prosperity reaches 60, -1 when debt exceeds 18, with maximum balance 13. Lost income at the cap is disclosed.
+- Save key bumped to `chokepoint_2040_save_v2` due to the richer world state; existing v1 saves are not overwritten but will not automatically migrate.
+
+### Testing
+
+`npm test` validates full 28-turn campaigns for all 12 countries under three policies, deterministic results, capital reconciliation, AI nation responses, player market ripples and finite world pressure. Local browser testing is a separate gate and may require a permitted browser runtime.

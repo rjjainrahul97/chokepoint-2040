@@ -31,3 +31,54 @@ test('invalid and unaffordable moves cannot be taken',()=>{
  const s=createGame('india');assert.throws(()=>takeTurn(s,'random'));
  s.cash=0;assert.throws(()=>takeTurn(s,'build'));
 });
+
+test('capital statement reconciles with charges, income and the cap for every half-year',()=>{
+ for(const country of Object.keys(COUNTRIES))for(const strategy of ['build','deal','buffer']){
+  let s=createGame(country,30129);
+  for(let t=0;t<TOTAL_TURNS;t++){
+   let opt=getOptions(s).find(x=>x.id===strategy&&x.available)||getOptions(s).find(x=>x.available);
+   s=takeTurn(s,opt.id);
+   const l=s.lastResult.ledger;
+   assert.equal(l.opening-l.cost-l.corporateCharge+l.incomeReceived,l.closing,`${country} ${strategy} turn ${t}`);
+   assert.equal(l.income-l.incomeReceived,l.capLost);
+   assert.equal(l.closing,s.cash);
+   assert.ok(l.incomeReceived>=0 && l.capLost>=0);
+  }
+ }
+});
+test('non-playable governments take actions with durable global effects',()=>{
+ let s=createGame('india',294);const firstPressure={...s.world.pressure};
+ const actionTypes=new Set(),countries=new Set(),ripples=new Set();
+ for(let i=0;i<28;i++){
+  const o=getOptions(s).find(x=>x.id==='deal'&&x.available)||getOptions(s).find(x=>x.available);
+  s=takeTurn(s,o.id);
+  const x=s.lastResult;
+  assert.ok(x.foreignMove.countryId!==s.countryId);
+  assert.equal(s.world.history.length,i+1);
+  assert.ok(typeof x.foreignMove.effect==='string' && x.foreignMove.effect.length>20);
+  assert.ok(typeof x.ripple.description==='string');
+  actionTypes.add(x.foreignMove.type);countries.add(x.foreignMove.countryId);ripples.add(x.ripple.title);
+ }
+ assert.ok(actionTypes.size>=3,`actions: ${[...actionTypes]}`);
+ assert.ok(countries.size>=6,`country count: ${countries.size}`);
+ assert.ok(Object.entries(s.world.pressure).some(([k,v])=>v!==firstPressure[k]));
+ assert.ok(s.world.history.some(x=>x.playerImpact!==0));
+});
+test('player decisions produce different global pressure under the same scenario',()=>{
+ let build=takeTurn(createGame('india',2040),'build');
+ let deal=takeTurn(createGame('india',2040),'deal');
+ let buffer=takeTurn(createGame('india',2040),'buffer');
+ const focus=build.lastResult.focus;
+ assert.equal(build.lastResult.ripple.pressureChange,0);
+ assert.ok(deal.lastResult.ripple.pressureChange<=0);
+ assert.ok(buffer.lastResult.ripple.pressureChange>=0);
+ assert.notEqual(deal.world.pressure[focus],buffer.world.pressure[focus]);
+});
+
+test('all world market pressure values remain finite across countries and seeds',()=>{
+ for(const seed of [4,17,2040,29381,955523])for(const country of Object.keys(COUNTRIES)){
+  let s=runWithPolicy(country,seed,'build');
+  for(const [stage,v] of Object.entries(s.world.pressure))assert.ok(Number.isFinite(v)&&v>=0&&v<=85,`${country}, ${seed}: ${stage}=${v}`);
+  for(const rival of Object.values(s.world.countries))for(const v of Object.values(rival.caps))assert.ok(Number.isFinite(v)&&v>=0&&v<=100);
+ }
+});

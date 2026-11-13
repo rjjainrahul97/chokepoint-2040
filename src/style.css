@@ -3,3 +3,49 @@
 @media(max-width:750px){.frame{padding-left:15px;padding-right:15px}.topbar{height:60px;margin-bottom:12px}.hero{padding:24px 0 16px}.hero h1{font-size:clamp(43px,11vw,65px);margin-top:10px}.hero p{font-size:15px}.statstrip{margin:19px 0 24px}.countries{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.country{padding:10px;min-height:94px}.country .flag{font-size:23px}.country .label{font-size:12px}.country .region{font-size:10px}.startpanel{padding:15px;flex-direction:column;align-items:stretch;gap:14px}.startpanel strong{font-size:15px}.mainbtn{width:100%}.gamegrid{grid-template-columns:1fr}.rightcol{grid-row:auto;grid-template-columns:1fr;gap:8px}.rightcol>.roundpanel{display:none}.rightcol>.roundpanel:first-of-type{display:block}.rightcol .resourcebar{display:none}.metrics{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}.metric{padding:7px 8px}.metric .m-label{font-size:9px}.metric .m-val{font-size:19px}.playhead{margin-bottom:4px}.playhead h1{font-size:20px}.playhead p{font-size:12px}.progress{margin:10px 0 10px}.mobile-hud{display:flex;justify-content:space-between;gap:5px;margin:0 0 10px;font-size:10px;color:var(--muted)}.mobile-hud span{background:#192435;border:1px solid #2a3c50;border-radius:8px;padding:6px 7px;white-space:nowrap}.mobile-hud b{color:var(--accent);font-size:12px}.roundpanel{padding:15px}.eventpanel h2{font-size:29px}.eventpanel .description{min-height:0;font-size:14px;margin-bottom:15px}.pressure{margin-bottom:15px}.eventhead{margin-bottom:11px}.choice{padding:12px 12px}.choice-desc{font-size:11px}.choice-bottom{margin-top:6px}.endhero h1{font-size:35px}.result-actions{flex-direction:column}.result-actions button{width:100%}}
 @media(max-width:390px){.brand{font-size:12px}.tag{font-size:10px;padding:4px 7px}.countries{grid-template-columns:repeat(2,minmax(0,1fr))}.metric .m-label{font-size:8px}.metric .m-val{font-size:18px}.hero h1{font-size:47px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* V0.2: legible consequences, causal effects and capital accounting. */
+.afteract{border:1px solid #527085;background:linear-gradient(135deg,#192738,#121d2b);border-radius:16px;padding:18px;margin:0 0 18px;box-shadow:0 10px 30px rgba(0,0,0,.14)}
+.afterhead{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:14px}
+.afterhead h2{font-size:19px;margin:5px 0 3px;line-height:1.18;letter-spacing:-.025em}
+.afterhead p{font-size:12px;color:#abb9c8;line-height:1.45;margin:6px 0}
+.afterhead p strong{color:#e9f0f8}
+.aftermark{color:#c7d5e7;font-size:12px;white-space:nowrap;border-radius:8px;padding:6px 9px;background:#28384b}
+.aftergrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.afteritem{border:1px solid #35495e;background:#111b2a;border-radius:11px;padding:12px;min-width:0}
+.afteritem p{font-size:12px;color:#c4d1df;line-height:1.48;margin:5px 0 0}
+.afteritem>strong{font-size:13px;color:#f0f4fa;display:block;margin-top:5px}
+.after-label{font-size:10px;font-weight:800;letter-spacing:.075em;color:#abbaca;display:flex;align-items:center;gap:7px}
+.tone-symbol{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:5px;font-size:14px;font-weight:900}
+.tone-symbol.positive,.signal.positive,.impact-tag.positive{background:#143b35;border-color:#27584f;color:#80dfbf}
+.tone-symbol.negative,.signal.negative,.impact-tag.negative{background:#442a34;border-color:#7a4054;color:#ffacb5}
+.tone-symbol.neutral,.signal.neutral,.impact-tag.neutral{background:#273649;border-color:#42566b;color:#c0d3e7}
+.impact-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}
+.impact-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;line-height:1.25;padding:5px 7px;border:1px solid transparent;border-radius:6px;font-variant-numeric:tabular-nums}
+.impact-tag b{font-size:13px}
+.mini-world{margin-top:9px;font-size:11px;border-left:2px solid #738aa7;padding:5px 0 5px 9px;color:#9fbedb}
+.ledger{margin-top:11px;padding:12px;border:1px solid #4b4939;background:#282a2b;border-radius:12px}
+.ledger .rowbetween strong{font-size:12px;color:#f0dfba}
+.ledger .rowbetween .micro{font-size:10px;text-align:right;max-width:170px}
+.capital-equation{display:flex;align-items:center;gap:8px;justify-content:flex-start;flex-wrap:wrap;margin:9px 0 6px}
+.capital-equation>span{display:flex;flex-direction:column;min-width:30px}
+.capital-equation>span small{font-size:10px;color:#c2b5a3}
+.capital-equation>span b{font-size:22px;line-height:1.15;font-variant-numeric:tabular-nums;color:#f3e6ca}
+.capital-equation>i{font-style:normal;color:#bba98a;font-size:16px}
+.capital-equation .capital-final{border-radius:6px;background:#49402c;padding:5px 8px}
+.ledger p.micro{margin:6px 0 0;line-height:1.4}
+.signal{display:inline-flex;padding:3px 5px;border:1px solid transparent;border-radius:5px;margin-right:5px;font-size:10px;font-weight:800;vertical-align:middle}
+.guide .guide-line{line-height:1.5;color:#b9c7d5;margin:0 0 10px;font-size:12px}
+.guide .guide-line strong{display:block;color:#e7edf6}
+@media(max-width:720px){.afteract{padding:12px}.aftergrid{grid-template-columns:1fr}.afteritem{padding:10px}.afterhead h2{font-size:17px}.aftermark{font-size:11px}.capital-equation{gap:5px}.capital-equation>span b{font-size:20px}}
+.summarylines{display:grid;gap:8px;margin:10px 0}
+.summaryline{display:flex;align-items:center;gap:9px;font-size:12px;line-height:1.38;color:#d0deed}
+.summaryline .tone-symbol{flex:none}
+.summaryline b{color:#f3f6fc}
+.after-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:9px}
+.after-footer .impact-tags{margin:0}
+.cashline{font-size:12px;color:#d9c6a4;background:#352e23;border:1px solid #65523c;border-radius:8px;padding:7px 9px;font-variant-numeric:tabular-nums}
+.cashline b{color:#fff2d2;font-size:15px}
+.afterdetails{margin-top:10px;border-top:1px solid #354b61;padding-top:9px}
+.afterdetails>summary{font-size:11px;color:#a9c8e8;cursor:pointer;list-style:revert;padding:3px 2px}
+.afterdetails[open]>.aftergrid{margin-top:12px}

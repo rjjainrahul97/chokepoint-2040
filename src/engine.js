@@ -3,6 +3,8 @@
  */
 export const START_YEAR=2027;
 export const TOTAL_TURNS=28;
+export const QUARTERS_PER_TURN=2;
+export const CAPITAL_CAP=13;
 export const STAGES=['resources','processing','technology','factories','logistics','energy','water','food','governance','connectivity'];
 export const STAGE_NAMES={resources:'Raw materials',processing:'Processing',technology:'Industrial know-how',factories:'Manufacturing',logistics:'Logistics',energy:'Energy',water:'Water',food:'Food',governance:'Execution',connectivity:'Connectivity'};
 export const STAGE_SUPPLIERS={resources:'Australia / Brazil',processing:'China',technology:'US / Japan / EU',factories:'China / East Asia',logistics:'Global shipping firms',energy:'Gulf / global markets',water:'Local watershed',food:'Global grain markets',governance:'Domestic institutions',connectivity:'Global cloud & networks'};
@@ -31,6 +33,16 @@ export const COUNTRIES={
  australia:C('Australia','🇦🇺','Oceania','Capture downstream value from resources without overbuilding',{resources:90,processing:36,technology:67,factories:41,logistics:67,energy:83,water:57,food:81,governance:84,connectivity:82},9,{prosperity:.30,resilience:.18,value:.42,public:.10}),
  indonesia:C('Indonesia','🇮🇩','Southeast Asia','Move up the value chain from extraction to manufacturing',{resources:85,processing:63,technology:37,factories:48,logistics:47,energy:66,water:67,food:67,governance:44,connectivity:61},9,{prosperity:.30,resilience:.19,value:.39,public:.12}),
  brazil:C('Brazil','🇧🇷','South America','Develop productive industry from resource and market strengths',{resources:88,processing:51,technology:49,factories:58,logistics:50,energy:79,water:76,food:93,governance:50,connectivity:67},9,{prosperity:.31,resilience:.20,value:.36,public:.13})
+};
+export const INDICATOR_HELP={
+ prosperity:'Economic performance. Strong production and infrastructure help it grow; financing costs, bottlenecks and market disruption drag it down. At 60, it raises capital income.',
+ value:'Domestic industrial value retained from research, processing and manufacturing. Higher figures improve your national score; dependent supply chains limit conversion.',
+ resilience:'Ability to withstand supply disruption. Driven mainly by your three biggest dependency exposures, alliances and emergency reserves. Higher is safer.',
+ public:'Political support for your strategy. Weak support eventually undermines execution; resource shortages and unpopular trade-offs damage it.',
+ capital:'Your spendable strategic budget, not an actual currency. Every half-year you pay decision costs, receive income based on prosperity and debt, and may face emergency fees. It cannot exceed 13.',
+ alliances:'International partner relationships that reduce exposure. Deals strengthen them, but goodwill decays without maintenance.',
+ corporate:'Bargaining power of non-playable firms. Powerful firms can demand concessions, threaten relocation and reduce domestic control.',
+ pressure:'Worldwide pressure on a supply-chain stage. Higher means more expensive, less reliable access. Other countries can ease or tighten it.'
 };
 const clamp=(x,min=0,max=100)=>Math.max(min,Math.min(max,x));
 const avg=(arr)=>arr.reduce((a,b)=>a+b,0)/arr.length;
@@ -68,6 +80,48 @@ const EVENTS=[
 ];
 export const EVENT_COUNT=EVENTS.length;
 const COST_BASE={build:4,deal:2,buffer:0};
+const FOREIGN_PRIORITIES={india:['processing','logistics','factories'],usa:['technology','factories','processing'],china:['factories','processing','technology'],germany:['energy','processing','logistics'],france:['technology','energy','processing'],saudi:['processing','water','factories'],uae:['logistics','processing','water'],japan:['technology','resources','processing'],korea:['technology','resources','energy'],australia:['processing','resources','logistics'],indonesia:['processing','factories','logistics'],brazil:['logistics','processing','factories']};
+const WORLD_STAGES=['resources','processing','technology','factories','logistics','energy','water','food','connectivity'];
+function newWorld(){return {pressure:Object.fromEntries(WORLD_STAGES.map(s=>[s,12])),countries:Object.fromEntries(Object.entries(COUNTRIES).map(([id,c])=>[id,{caps:{...c.starting},projectsCompleted:0}])),projects:[],history:[]};}
+export function globalPressure(state,focus){return Math.round(state.world?.pressure?.[focus]??12);}
+function moveWorld(state){
+ const world=state.world;const turn=state.turn;const rivals=Object.keys(COUNTRIES).filter(id=>id!==state.countryId);
+ const actorId=rivals[(hash(`${state.seed}:${turn}:foreign-actor`)+turn)%rivals.length];
+ const actor=COUNTRIES[actorId];const bot=world.countries[actorId];
+ const prior=FOREIGN_PRIORITIES[actorId];const stage=prior[hash(`${state.seed}:${turn}:${actorId}:focus`)%prior.length];
+ const value=bot.caps[stage];const roll=hash(`${state.seed}:${turn}:${actorId}:policy`)%100;
+ const priorPressure=globalPressure(state,stage);
+ let type='build',title='',effect='',tone='neutral',playerImpact=0,globalShift=0;
+ if(roll<19 && value>=58 && ['china','usa','indonesia','saudi','australia'].includes(actorId) && ['processing','resources','technology','energy'].includes(stage)){
+  type='restrict';globalShift=7;tone='negative';title='tightens strategic exports';effect=`Supply access for ${STAGE_NAMES[stage].toLowerCase()} becomes harder globally.`;
+ }else if(roll<38 && ['usa','china','germany','france','korea','japan'].includes(actorId)){
+  type='standards';globalShift=4;tone='negative';title='tightens industrial standards';effect=`Suppliers using ${actor.name}'s standards gain an advantage; competitors face additional compliance costs.`;
+ }else if(roll<64){
+  type='build';title='invests in production capacity';effect=`A competing ${STAGE_NAMES[stage].toLowerCase()} project begins construction; additional supply could arrive in three half-years.`;
+  world.projects.push({countryId:actorId,stage,finishTurn:turn+3,gain:5});
+ }else if(roll<82){
+  type='pact';globalShift=-5;tone='positive';title='opens a trade corridor';effect=`International ${STAGE_NAMES[stage].toLowerCase()} access improves as new trade links are agreed.`;
+ }else{
+  type='scale';globalShift=-4;tone='positive';title='expands exports';effect=`An existing ${STAGE_NAMES[stage].toLowerCase()} supplier increases available international capacity.`;
+  bot.caps[stage]=clamp(value+2);
+ }
+ if(globalShift){world.pressure[stage]=clamp(world.pressure[stage]+globalShift,0,85);}
+ const afterPressure=globalPressure(state,stage);const directExposure=dependency(state)[stage]??100-state.caps[stage];
+ if(type==='restrict'||type==='standards'){
+  if(directExposure>45){playerImpact=-(directExposure>72?3:2);inc(state,stage,playerImpact);}
+  else if(directExposure>30){playerImpact=-1;inc(state,stage,-1);}
+ }else if(type==='pact'||type==='scale'){
+  if(directExposure>42){playerImpact=1;inc(state,stage,1);}
+ }
+ const completed=[];world.projects=world.projects.filter(p=>{if(p.finishTurn<=turn){
+  world.countries[p.countryId].caps[p.stage]=clamp(world.countries[p.countryId].caps[p.stage]+p.gain);
+  world.countries[p.countryId].projectsCompleted++;world.pressure[p.stage]=clamp(world.pressure[p.stage]-5,0,85);
+  completed.push({countryId:p.countryId,stage:p.stage,amount:p.gain});return false;}return true;});
+ // Pressure eases gradually, unless a country's investments or restrictions keep moving the frontier.
+ for(const key of WORLD_STAGES)world.pressure[key]=clamp(world.pressure[key]+(world.pressure[key]>12?-1:world.pressure[key]<12?1:0),0,85);
+ const news={countryId:actorId,country:actor.name,flag:actor.flag,type,stage,title,effect,tone,playerImpact,pressureBefore:priorPressure,pressureAfter:globalPressure(state,stage),completed,quarter:halfLabel(turn)};
+ world.history.push(news);return news;
+}
 const RESPONSES={
  resources:[['Process more at home','Domestic conversion plants', 'build'],['Sign cross-border mineral deals','Diversify sources', 'deal'],['Secure emergency supply','Short-term input buffers', 'buffer']],
  processing:[['Build a processing base','Own the missing middle stage','build'],['Share technology with allies','Joint processing rights','deal'],['Diversify and stockpile','Buy time, not ownership','buffer']],
@@ -100,7 +154,7 @@ function eventDeck(seed){ // One event per turn, shuffled in short acts so each 
 }
 export function createGame(countryId='india',seed=2040){
  const country=COUNTRIES[countryId]||COUNTRIES.india;
- const state={version:1,countryId:COUNTRIES[countryId]?countryId:'india',seed:Number(seed)||2040,turn:0,caps:{...country.starting},cash:country.budget,public:66,corporate:38,alliances:29,buffer:8,debt:0,prosperity:49,value:42,projects:[],history:[],messages:[],lastResult:null};
+ const state={version:2,world:newWorld(),countryId:COUNTRIES[countryId]?countryId:'india',seed:Number(seed)||2040,turn:0,caps:{...country.starting},cash:country.budget,public:66,corporate:38,alliances:29,buffer:8,debt:0,prosperity:49,value:42,projects:[],history:[],messages:[],lastResult:null};
  return recalc(state);
 }
 export function getEvent(state){if(state.turn>=TOTAL_TURNS)return null; const idx=eventDeck(state.seed)[state.turn];const base=EVENTS[idx];let desc=base.desc;
@@ -117,18 +171,19 @@ export function getOptions(state,event=getEvent(state)){
  return labels.map((o,i)=>{
   const type=['build','deal','buffer'][i];
   let cost=COST_BASE[type];
-  if(type==='build'&&state.caps.governance<38) cost+=1;
-  if(type==='deal'&&state.alliances<22) cost+=1;
+  let costReason='';
+  if(type==='build'&&state.caps.governance<38){cost+=1;costReason='1 extra: red tape';}
+  if(type==='deal'&&state.alliances<22){cost+=1;costReason='1 extra: weak partnerships';}
   const dur=type==='build'?duration:type==='deal'?2:0;
   const payoff=type==='build'?(13+Math.round((100-state.caps[focus])/20)):(type==='deal'?7:2);
   let detail=type==='build'?`+${payoff} ${STAGE_NAMES[focus].toLowerCase()} after ${dur} halves`:type==='deal'?`+${payoff} capability in ${dur} halves; more foreign influence`:`Immediate relief; no lasting industry`;
   if(type==='build'&&state.turn+dur>=TOTAL_TURNS)detail=`Project matures ${state.turn+dur>=TOTAL_TURNS?'after the final decision':'soon'}; scored in 2040 forecast`;
   const avoidable=type==='buffer'?0:type==='deal'?0:0;
-  return {id:type,title:o[0],subtitle:o[1],cost,duration:dur,payoff,focus,detail,available:state.cash>=cost,corporate:type==='deal'?9:type==='build'?-2:1,alliances:type==='deal'?9:type==='build'?0:0,public:type==='buffer'?6:type==='build'?-2:1};
+  return {id:type,title:o[0],subtitle:o[1],cost,costReason,duration:dur,payoff,focus,detail,available:state.cash>=cost,corporate:type==='deal'?9:type==='build'?-2:1,alliances:type==='deal'?9:type==='build'?0:0,public:type==='buffer'?6:type==='build'?-2:1};
  });
 }
 function inc(state,key,amount){state.caps[key]=clamp(state.caps[key]+amount);}
-function completeProjects(state){let msgs=[];const finished=[];state.projects=state.projects.filter(p=>{if(p.finishTurn<=state.turn){finished.push(p);return false;}return true;});for(const p of finished){inc(state,p.focus,p.gain);if(p.type==='build'){state.value=clamp(state.value+1);state.public=clamp(state.public+1);state.corporate=clamp(state.corporate-1);}else state.alliances=clamp(state.alliances+2);msgs.push(`${p.label} completed (+${p.gain} ${STAGE_NAMES[p.focus].toLowerCase()}).`);}return msgs;}
+function completeProjects(state){let msgs=[];const finished=[];state.projects=state.projects.filter(p=>{if(p.finishTurn<=state.turn){finished.push(p);return false;}return true;});for(const p of finished){inc(state,p.focus,p.gain);if(p.type==='build'){state.value=clamp(state.value+1);state.public=clamp(state.public+1);state.corporate=clamp(state.corporate-1);}else state.alliances=clamp(state.alliances+2);if(p.type==='build' && state.world?.pressure[p.focus]!==undefined)state.world.pressure[p.focus]=clamp(state.world.pressure[p.focus]-3,0,85);msgs.push(`${p.label} completed (+${p.gain} ${STAGE_NAMES[p.focus].toLowerCase()})${p.type==='build'?', adding supply beyond your borders':''}.`);}return msgs;}
 function macro(state,ev,option){
  // Complementary capability model: the bottleneck in the middle of the chain matters.
  const c=state.caps;
@@ -138,7 +193,8 @@ function macro(state,ev,option){
  const exec=clamp((c.governance+35)/135,.30,1);
  const industrial=(.50*chain+.20*c.technology+.15*c.connectivity+.15*c.resources)*(.65+.35*available)*(.65+.35*exec);
  const exposure=dependency(state);
- const growth=.50+(industrial-40)/32-(state.debt*.018)-(state.corporate>80?.22:0);
+ const worldFriction=avg(['processing','technology','logistics','energy'].map(k=>globalPressure(state,k)))/100;
+ const growth=.50+(industrial-40)/32-(state.debt*.018)-(state.corporate>80?.22:0)-worldFriction*.55;
  state.prosperity=clamp(state.prosperity+growth);
  const addedValue=(Math.min(c.processing,c.factories)-45)/50+(c.technology-60)/230-(state.corporate-45)/130;
  state.value=clamp(state.value+addedValue);
@@ -146,22 +202,24 @@ function macro(state,ev,option){
  state.corporate=clamp(state.corporate+(.22+state.alliances*.002),10,95);
  state.debt=Math.max(0,state.debt+(state.cash===0?.3:-.13));
  const income=3+(state.prosperity>=60?1:0)-(state.debt>18?1:0);
- state.cash=clamp(state.cash+income,0,13);
+ const priorCash=state.cash;state.cash=clamp(state.cash+income,0,CAPITAL_CAP);
+ const incomeReceived=state.cash-priorCash;const capLost=income-incomeReceived;
  state.buffer=clamp(state.buffer-.7,0,35);
  state.alliances=clamp(state.alliances-.65,0,100);
  if(state.public<16)state.caps.governance=clamp(state.caps.governance-.8);
- return {industrial,exposure};
+ return {industrial,exposure,income,incomeReceived,capLost};
 }
-export function dependency(state){const c=state.caps;const modes=['processing','technology','factories','logistics','energy','water','food','connectivity'];const exposure={};for(const stage of modes){let score=100-c[stage];if(['processing','factories','technology','logistics','energy','connectivity'].includes(stage))score=Math.max(0,score-state.alliances*.19-state.buffer*.20);exposure[stage]=clamp(Math.round(score));}return exposure;}
+export function dependency(state){const c=state.caps;const modes=['processing','technology','factories','logistics','energy','water','food','connectivity'];const exposure={};for(const stage of modes){let score=100-c[stage];if(['processing','factories','technology','logistics','energy','connectivity'].includes(stage))score=Math.max(0,score-state.alliances*.19-state.buffer*.20);if(state.world && ['processing','technology','factories','logistics','energy','connectivity'].includes(stage))score+=globalPressure(state,stage)*.24;exposure[stage]=clamp(Math.round(score));}return exposure;}
 export function recalc(state){const c=state.caps;const d=dependency(state);const rev=avg(Object.values(d).sort((a,b)=>b-a).slice(0,3));const social=avg([c.water,c.food,c.governance]);state.resilience=clamp(Math.round(95-.84*rev+.12*(social-50)+state.buffer*.12),0,100);state.value=Math.round(clamp(state.value));state.prosperity=Math.round(clamp(state.prosperity));state.public=Math.round(clamp(state.public));return state;}
 export function takeTurn(original,choiceId){
  if(original.turn>=TOTAL_TURNS)throw Error('Game already finished');
  const s=JSON.parse(JSON.stringify(original));const event=getEvent(s);const option=getOptions(s,event).find(o=>o.id===choiceId);
  if(!option||!option.available)throw Error('Choice unavailable');
+ const before={cash:s.cash,prosperity:s.prosperity,value:s.value,resilience:s.resilience,public:s.public,corporate:s.corporate,alliances:s.alliances};
  s.cash-=option.cost;
  // Baseline event shock, mitigated by investments already in place and the selected response.
  const vuln=clamp((70-s.caps[event.focus])/70,0,1.5);
- const rawDamage=event.threat*(.50+.65*vuln);
+ const rawDamage=event.threat*(.50+.65*vuln)*(1+globalPressure(s,event.focus)/110);
  let mitigation=option.id==='buffer'?.83:option.id==='deal'?.43:.19;
  mitigation=Math.min(.95,mitigation+s.buffer*.006+s.caps.governance*.001);
  const damage=Math.max(1,Math.round(rawDamage*(1-mitigation)));
@@ -174,6 +232,7 @@ export function takeTurn(original,choiceId){
    else {s.corporate=clamp(s.corporate-2);s.public=clamp(s.public-1);s.value=clamp(s.value+.6);}
  }
  let corporateMove='';
+ let corporateCharge=0;
  // Non-playable actors have their own agenda, reacting to tax rules, state power and scarcity.
  const roll=hash(`${s.seed}:${s.turn}:${s.countryId}:corporate`)%100;
  if(event.actor==='aster'&&s.corporate>58&&choiceId==='build'){
@@ -181,7 +240,7 @@ export function takeTurn(original,choiceId){
  }else if(event.actor==='helix'&&s.caps.processing>65&&choiceId==='build'){
   s.caps.processing=clamp(s.caps.processing-2);corporateMove='Helix Materials cuts export prices to put pressure on your new local capacity.';
  }else if(event.actor==='bluewave'&&s.caps.logistics<42&&choiceId==='buffer'){
-  s.cash=Math.max(0,s.cash-1);corporateMove='BlueWave charges a premium for emergency shipping access.';
+  corporateCharge=Math.min(1,s.cash);s.cash-=corporateCharge;corporateMove='BlueWave charges a premium for emergency shipping access.';
  }else if(event.actor==='union'&&s.caps.factories>65&&choiceId==='build'){
   s.public=clamp(s.public-5);corporateMove='The Industrial Workers Federation demands retraining commitments.';
  }else if(roll<13&&s.corporate>58){
@@ -189,11 +248,18 @@ export function takeTurn(original,choiceId){
  }else if(roll>89&&s.alliances>45){
   inc(s,'technology',2);corporateMove='A partner nation shares technical training through an industrial cooperation pact.';
  }
+ let ripple;
+ if(option.id==='deal'){const prev=globalPressure(s,event.focus);s.world.pressure[event.focus]=clamp(prev-2,0,85);ripple={tone:'positive',title:'Trade ties open supply',description:`Your deal eases pressure on ${STAGE_NAMES[event.focus].toLowerCase()} access for the wider market.`,pressureChange:globalPressure(s,event.focus)-prev};}
+ else if(option.id==='buffer'){const prev=globalPressure(s,event.focus);s.world.pressure[event.focus]=clamp(prev+1,0,85);ripple={tone:'neutral',title:'Relief now, dependency remains',description:`Your emergency buying protects local users but marginally tightens near-term global ${STAGE_NAMES[event.focus].toLowerCase()} supply.`,pressureChange:globalPressure(s,event.focus)-prev};}
+ else {ripple={tone:'neutral',title:'New capacity is being built',description:`Your project could ease international ${STAGE_NAMES[event.focus].toLowerCase()} shortages if it completes. Today it has not produced anything yet.`,pressureChange:0};}
+ const foreignMove=moveWorld(s);
  s.turn++;
  const completed=completeProjects(s);
- macro(s,event,option);
+ const macroResult=macro(s,event,option);
  recalc(s);
- const cause={quarter:halfLabel(original.turn),event:event.title,actor:event.actorName,choice:option.title,cost:option.cost,damage,focus:event.focus,project:option.id==='buffer'?'Immediate mitigation':`${option.duration} halves to deliver`,companyResponse:corporateMove,completed};
+ const ledger={opening:before.cash,cost:option.cost,corporateCharge,income:macroResult.income,incomeReceived:macroResult.incomeReceived,capLost:macroResult.capLost,closing:s.cash};
+ const metricChange={prosperity:s.prosperity-before.prosperity,value:s.value-before.value,resilience:s.resilience-before.resilience,public:s.public-before.public,alliances:Math.round(s.alliances-before.alliances),corporate:Math.round(s.corporate-before.corporate)};
+ const cause={quarter:halfLabel(original.turn),event:event.title,actor:event.actorName,choice:option.title,cost:option.cost,damage,focus:event.focus,project:option.id==='buffer'?'Immediate mitigation':`${option.duration} halves to deliver`,companyResponse:corporateMove,completed,foreignMove,ripple,ledger,metricChange,globalPressure:globalPressure(s,event.focus)};
  s.history.push(cause);s.lastResult=cause;
  s.messages=[...(corporateMove?[corporateMove]:[]),...completed].slice(0,3);
  if(s.turn===TOTAL_TURNS){ // Give plausible end-period partial credit for projects not yet complete.
