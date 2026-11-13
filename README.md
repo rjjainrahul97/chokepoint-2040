@@ -29,6 +29,8 @@ npm run serve
 
 Open `http://localhost:8000`. Any static host supporting ES modules works. Production remains GitHub Pages from `main`, repository root. Existing `.nojekyll`, favicon and MIT licence are preserved.
 
+For visible browser acceptance, open `tools/browser-check.html`, use the viewport selector and reload control, and follow [the verification record](docs/VERIFICATION.md). It loads the actual game rather than a mocked engine.
+
 The balance harness writes `test-results/balance.json` and `test-results/campaigns.csv`. It checks 12 countries, eight seeds, eleven policies and 72 modified starting conditions. Scenario assertions live in `tests/engine.test.mjs`.
 
 ## Architecture

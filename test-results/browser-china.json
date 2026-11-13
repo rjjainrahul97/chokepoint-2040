@@ -1,0 +1,223 @@
+{
+  "campaign": {
+    "country": "china",
+    "seed": 17,
+    "decisions": 28,
+    "outcome": "Prosperity on permission",
+    "metrics": "Prosperity\n64\nAutonomy\n54\nValue kept\n36\nMandate\n99"
+  },
+  "actions": [
+    "ai",
+    "factory",
+    "imports",
+    "welfare",
+    "regulate",
+    "conserve",
+    "bargain",
+    "welfare",
+    "welfare",
+    "imports",
+    "imports",
+    "welfare",
+    "repay",
+    "imports",
+    "conserve",
+    "welfare",
+    "imports",
+    "royalties",
+    "imports",
+    "welfare",
+    "conserve",
+    "welfare",
+    "conserve",
+    "welfare",
+    "royalties",
+    "repay",
+    "repay",
+    "repay"
+  ],
+  "layouts": [
+    {
+      "buttons": [
+        133.640625,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        133.640625
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        133.640625,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        133.640625,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        133.640625
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        116.59375,
+        116.59375,
+        133.640625
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "buttons": [
+        133.640625,
+        116.59375,
+        116.59375
+      ],
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    },
+    {
+      "scroll": 375,
+      "width": 375
+    }
+  ]
+}

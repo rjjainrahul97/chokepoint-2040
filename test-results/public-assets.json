@@ -1,0 +1,37 @@
+[
+  {
+    "file": "index.html",
+    "status": 200,
+    "bytes": 1212,
+    "matches": true,
+    "sha256": "f590a4282ade500b95c1ca8ec85d0067f42a31919a271c175141053a3fe3ffc1"
+  },
+  {
+    "file": "src/app.js",
+    "status": 200,
+    "bytes": 24627,
+    "matches": true,
+    "sha256": "25620a7a66e44d9dfe84f60d2c9bbef02eda4e51cfdb628197d3aefb36fa4301"
+  },
+  {
+    "file": "src/engine.js",
+    "status": 200,
+    "bytes": 36666,
+    "matches": true,
+    "sha256": "d98346988d57d396b91dbf10e1067ed78be31d6a8eef3c0d49f7d3ab3e1ddd36"
+  },
+  {
+    "file": "src/countries.js",
+    "status": 200,
+    "bytes": 3639,
+    "matches": true,
+    "sha256": "54d36bb8a51eda9edd027d8d1b253b5075bc3f71c3e614e377c995a72905e86f"
+  },
+  {
+    "file": "src/style.css",
+    "status": 200,
+    "bytes": 13548,
+    "matches": true,
+    "sha256": "377b862a31596a205e68ea090d6dd083bd4bbf6a122e2206564e4bc8d33b936c"
+  }
+]

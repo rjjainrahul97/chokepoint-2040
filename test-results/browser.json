@@ -1,0 +1,101 @@
+{
+  "date": "2026-11-13",
+  "application_commit": "38fde46c9153961c41a7ec1e009790c85c4337aa",
+  "public_url": "https://rjjainrahul97.github.io/chokepoint-2040/",
+  "method": "Automated visible Chrome interactions through the shared browser, public Pages assets in real 390x844 CSS iframe; no injected source or direct engine calls.",
+  "campaigns": [
+    {
+      "country": "india",
+      "seed": 2040,
+      "turns": 28,
+      "mode": "normal consequences",
+      "score": 65,
+      "ending": "Many partners. More options."
+    },
+    {
+      "country": "india",
+      "seed": 2040,
+      "turns": 28,
+      "mode": "quick play, identical action replay",
+      "score": 65,
+      "identical_metric_result": true
+    },
+    {
+      "country": "saudi",
+      "seed": 2040,
+      "turns": 28,
+      "mode": "quick play, resource-first policy",
+      "score": 54,
+      "ending": "Many partners. More options."
+    },
+    {
+      "country": "china",
+      "seed": 17,
+      "turns": 28,
+      "mode": "final UI, quick play",
+      "ending": "Prosperity on permission",
+      "prosperity": 64,
+      "autonomy": 54,
+      "value": 36,
+      "mandate": 99,
+      "mid_campaign_reload": "2034 H1, turn 15/28"
+    }
+  ],
+  "checks": {
+    "root_public_url_loaded_final_module": "src/app.js?v=3.2",
+    "new_seed_retained_after_start_and_reload": 17,
+    "normal_and_quick_modes": true,
+    "same_world_replay_identical": true,
+    "end_state_reload": true,
+    "mid_game_reload": true,
+    "text_share": "Outcome and same-world link copied",
+    "card_preview": {
+      "width": 800,
+      "height": 1000,
+      "format": "PNG"
+    },
+    "card_download": "Observed completed download, valid PNG signature, 100435 bytes",
+    "overflow": [
+      {
+        "frame": 320,
+        "client": 305,
+        "scroll": 305,
+        "expanded_causal_account": true
+      },
+      {
+        "frame": 390,
+        "client": 375,
+        "scroll": 375,
+        "all_28_final_campaign_turns": true,
+        "expanded_system": true
+      },
+      {
+        "frame": 768,
+        "client": 753,
+        "scroll": 753
+      }
+    ],
+    "choice_touch_targets": "Observed 116-134 CSS px high; primary buttons 50px; wordmark 44px; quick-play label 44px",
+    "displayed_ledger": {
+      "opening": 14,
+      "spending": 7.03,
+      "other": 1.91,
+      "income": 4.68,
+      "closing": 9.74
+    },
+    "application_console_errors_observed": 0,
+    "extension_metadata_errors_excluded": 279
+  },
+  "repairs_from_browser_evidence": [
+    "Display exact two-decimal financial values to avoid apparent ledger mismatch.",
+    "Replace unsupported arrow glyphs.",
+    "Read seed on start and persist campaign URL for reload.",
+    "Use a previewable PNG with an explicit download link rather than an immediate unobserved SVG download."
+  ],
+  "limits": [
+    "Chrome engine only, no physical iOS or Android device run.",
+    "Automated actions cannot establish human enjoyment or a 5-7 minute duration.",
+    "Classic desktop scrollbars reserve 15px inside each frame; content was tested at the resulting narrower widths.",
+    "Browser performance API was unavailable through the read-only browser surface; no formal LCP measurement."
+  ]
+}
