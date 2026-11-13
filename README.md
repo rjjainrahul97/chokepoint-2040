@@ -1,75 +1,64 @@
 # CHOKEPOINT 2040
 
-A free, mobile-first strategy game about industrial dependencies, mega-companies and international bargaining power. It is intentionally **fictional** and designed for fun, not to forecast actual GDP, security outcomes or corporate decisions.
+**Own tomorrow. Pay for today.** A free, mobile-first geopolitical strategy game about sovereign AI, industrial capability and the cost of independence.
 
-## Play
+[Play the game](https://rjjainrahul97.github.io/chokepoint-2040/)
 
-Pick from 12 countries. Each turn represents six months between 2027 H1 and 2040 H2 (28 turns). A global event occurs and a non-playable corporate or institutional actor can react. Choose between building domestic capacity, negotiating access or buying time with emergency relief. Some projects take multiple turns, and water, food, logistics, energy and governance constrain industrial performance.
+Choose one of 12 countries. Govern for 28 half-years from 2027 H1 to 2040 H2. Each cabinet brief offers three policies. Build, trade, negotiate, regulate, commercialise research or protect households. Other countries and seven fictional corporate groups operate in the same world.
 
-Every run has a numeric seed. Share links using `?country=india&seed=123456` to replay the same event order. Games automatically save to the current browser's local storage.
+## What's different in v1.0
 
-## Run locally
+- Nineteen distinct policy mechanics replace the common build/deal/buffer template.
+- Laboratories and compute produce discoveries and owned IP. Pilot lines build process knowledge. Manufacturing needs equipment, materials, power, water, logistics and skilled workers before it captures value.
+- Cheap inputs deliver immediate gains while supplier concentration, toolchain lock-in and switching costs accumulate. Reliable imports can still be useful.
+- Six global supply/demand markets respond to government projects, export restrictions, corporate supply assets and player investment.
+- NPC governments invest according to needs and strategic priorities. Firms expand, lobby, defer assets and reprice actual contracts.
+- Every half-year has an itemised capital ledger, domestic and world consequences, delayed completion messages and optional detail.
+- Quick play, saved campaigns, deterministic same-world replay, previous-run comparison, share text and downloadable SVG outcome cards.
+- Multiple coexisting legacies based on the whole campaign, including research without industrial capture, profitable interdependence, corporate capture and failed substitution.
 
-No build tools, AI API, login, server or paid dependencies required.
+## Run and verify
 
-```sh
-python3 -m http.server 8000
-# open http://localhost:8000
-```
-
-Or open with any static-web-server extension. Browser ES modules must be served over HTTP(S), not `file://`.
-
-## Tests
-
-Requires Node.js 20+ for the `node:test` runner.
+No install or build step is needed. Use Node 20+ for tests and Python 3 for a local static preview:
 
 ```sh
 npm test
+node tools/balance.mjs
+npm run serve
 ```
 
-Runs all 12 countries through 28 turns, checks seeded determinism, gameplay completeness, affordability, non-identical outcomes and invalid moves.
+Open `http://localhost:8000`. Any static host supporting ES modules works. Production remains GitHub Pages from `main`, repository root. Existing `.nojekyll`, favicon and MIT licence are preserved.
 
-## GitHub Pages
-
-1. Create an empty **public** repository named `chokepoint-2040` in your GitHub account.
-2. Upload the entire project contents so `index.html` is at the repository root.
-3. In repository **Settings → Pages**, set **Build and deployment → Deploy from a branch**, choose `main` and `/ (root)`.
-4. GitHub should publish at `https://YOUR_USERNAME.github.io/chokepoint-2040/`. Confirm the deployed URL directly, since deployment may be asynchronous.
-
-No GitHub Actions workflow is necessary.
+The balance harness writes `test-results/balance.json` and `test-results/campaigns.csv`. It checks 12 countries, eight seeds, eleven policies and 72 modified starting conditions. Scenario assertions live in `tests/engine.test.mjs`.
 
 ## Architecture
 
-- `src/engine.js`: all game rules, countries, event deck, economic constraints, corporate responses and scoring.
-- `src/app.js`: front end, country selection, campaign navigation, saving and sharing.
-- `src/style.css`: responsive mobile-first interface.
-- `tests/engine.test.mjs`: deterministic simulation checks.
-- `BUILD_STATE.md`: assumptions, checks, risks and handoff.
+| File | Responsibility |
+|---|---|
+| `src/countries.js` | Preserved 12 country profiles and national objective weights |
+| `src/engine.js` | Pure state transition, projects, discovery work, production, budgets, markets, government utilities, firm policies, outcomes and replay validation |
+| `src/app.js` | Country selection, cabinet decisions, consequence briefings, optional systems view, saves and sharing |
+| `src/style.css` | Responsive phone-first interface, keyboard focus and reduced-motion support |
+| `tools/balance.mjs` | Country/seed/policy sweeps and state/accounting invariants |
+| `docs/DESIGN_RESEARCH.md` | Verified reference mechanics, sources, adopted simplifications and rejected complexity |
+| `BUILD_STATE.md` | Acceptance evidence, deployment status, rollback and known limits |
 
-## Simulation design assumptions
+Each half-year: validate choice → commit capital/contract → country and corporate policies → complete engineering work → recompute markets → research/production/resource feedback → settle budgets → update shared prices → record consequence → advance time.
 
-- Country capability scores start as **illustrative game values** rather than verified macroeconomic measurements.
-- Corporate actors are **fictional composites**, not representations of actual businesses.
-- A low-capacity country can still win by combining partnerships, industrial investments and buffers.
-- High-score outcomes are not guaranteed to match a named ending: endings emphasise dominant trade-off traps.
-- The simulation excludes currency, electoral politics and monetary policy as explicit levers to keep turns quick; their effects appear indirectly through events.
+All twelve nations use the same resource and economic calculations. NPCs make a discrete investment once per three turns, staggered across nations; budgets, research and operating costs settle every turn. This deliberately limits how much construction happens in a six-minute game. Company supply assets contribute to the same markets.
 
-## Licence
+## Transparent assumptions
 
-MIT. This is a small educational toy.
+This is entertainment with educational value. All indices and parameters are fictional. It is not economic forecasting software. Production and value kept are distinct: buying a foreign licence can raise output without transferring IP ownership. Capital is a strategic budget unit, not dollars or GDP. Market prices are multipliers and capability indices run from 0 to 100.
 
+Project work requires time and can slow when engineering teams are crowded. Projects completed after 2040 receive no premature production credit. The final three briefs prefer choices that can pay off before the horizon.
 
-## Version 0.2: explain what actually happened
+The v3 save schema is separate from v2. Old saves remain under their old browser-storage key and are not migrated into the different engine. New saves are checked by replaying their action history. No account, network API, database, analytics, AI calls or service worker is used.
 
-- One player choice per **half-year** (two calendar quarters); 28 turns from 2027 H1 to 2040 H2.
-- The next turn shows a compact **After action** report, naming the player's global ripple, an independent country move, domestic score changes, and a reconciled capital equation. Expand it for corporate responses and delayed project completions.
-- Each non-playable government has its own capability starting point, country-specific investment priorities and deterministic motives. Their export restrictions, trade corridors, standards competition and infrastructure investments affect shared global supply pressure and sometimes the player's capabilities.
-- Production capacity started by rival governments comes online after three half-years; global pressure eases or rises with government actions, with gradual decay. Your production completions and trade deals can also ease pressure, while emergency stockpiling marginally tightens it.
-- Positive, neutral and negative effects use icon + text + colour (never colour alone).
-- In-game definitions explain prosperity, domestic value capture, resilience, public mandate, alliances, corporate power and investable capital.
-- Capital ledger: `opening - decision cost - corporate fees + received income = closing`. Standard income is 3, +1 when Prosperity reaches 60, -1 when debt exceeds 18, with maximum balance 13. Lost income at the cap is disclosed.
-- Save key bumped to `chokepoint_2040_save_v2` due to the richer world state; existing v1 saves are not overwritten but will not automatically migrate.
+## Limits and rollback
 
-### Testing
+Markets aggregate goods and do not conserve every bilateral financial flow. Defence, elections, exchange rates, detailed land use and full climate physics are outside scope. Finite simulations cannot establish perfect balance or prove the absence of exploits. The 5-7 minute duration is a design target pending human playtesting.
 
-`npm test` validates full 28-turn campaigns for all 12 countries under three policies, deterministic results, capital reconciliation, AI nation responses, player market ripples and finite world pressure. Local browser testing is a separate gate and may require a permitted browser runtime.
+Rollback checkpoint: branch `rollback/pre-v1-20261113`, commit `9ebb104499f0f58907d6080c72935e4c6ff087ae`. Restore its tracked game files in a new commit on main to trigger a Pages rollback. Retain history and the v3 save key to allow forward recovery.
+
+MIT licensed. No proprietary game source code or protected assets are included.

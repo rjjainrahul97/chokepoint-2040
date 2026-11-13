@@ -1,59 +1,52 @@
-# Build checkpoint - CHOKEPOINT 2040
+# Build state: CHOKEPOINT 2040 v1.0
 
-Build ID: CP-2040-20261113
-Status: PARTIAL (GitHub source and Pages deployment verified; live hosted user path not independently observed)
+Build ID: CP2040-20261113-REBUILD
+Status: IMPLEMENTED / AUTOMATED VERIFICATION PASSED / PUBLIC BROWSER VERIFICATION IN PROGRESS
+Date: 13 November 2026 (India)
+Authority: user authorised source changes, free tools and the existing public Pages deployment. No paid services, access changes, credential publication or unrelated deletion.
 
-## Goal
-Free, phone-first strategy game at a publicly accessible GitHub Pages URL, playable in approximately 5-7 minutes.
+## Inspection and checkpoint
 
-## Working build
-- 12 selectable countries with differentiated starting characteristics and score weights.
-- 28 half-year turns from 2027 H1 to 2040 H2.
-- One of three fast moves per turn; delayed projects and compounding constraints.
-- Fictional non-playable corporate and institutional actors that create events and can respond to moves.
-- Industrial factors: resources, refining, technology, manufacturing, logistics, energy, water, food, governance and connectivity.
-- Multiple outcome archetypes with numerical score and detailed end report.
-- Same-world replay via seeded scenario and share link, saved browser session, no account, AI API, analytics or paid dependencies.
+[SRC] Inspected main at `9ebb104499f0f58907d6080c72935e4c6ff087ae`, source, tests, package configuration, prior BUILD_STATE and live public game. Existing nine tests passed before changes. Public HTTP returned 200. Browser observed country selection and India first decision.
 
-## Verification evidence
-- npm test on 2026-11-13: 5/5 PASS, including 36 full 28-turn policy runs (12 countries x 3 strategies), seed reproducibility, choices affordability, invalid action rejection and outcome diversity.
-- node --check src/app.js and src/engine.js: PASS.
-- Local HTTP server: 200 OK for index.html.
-- Browser captures observed: /mnt/data/chokepoint-home.png, /mnt/data/chokepoint-play.png, /mnt/data/chokepoint-end.png. Home, game and end screens visually inspected at mobile size.
-- Not verified: public GitHub Pages delivery; needs live check after commit and Pages configuration.
+[SRC] Verified weaknesses in code: three common action types; scalar technology rather than discovery/commercialisation; largely hash-selected NPC actions; generic corporate influence; artificially capped capital. Existing replay, country profiles, static hosting and ledger concepts were preserved.
 
-## Tool and authorisation state
-- GitHub connector successfully authenticated as rjjainrahul97 on 2026-11-13.
-- GitHub repository rjjainrahul97/chokepoint-2040: observed public, writable and on main (2026-11-13).
-- Available connected GitHub integration can edit existing repository files but lacks create-repository and Pages configuration methods.
-- Public publishing was explicitly requested by the user. Must publish only game artefacts and no private files.
+[SRC] Rollback branch created on GitHub: `rollback/pre-v1-20261113` at `9ebb104499f0f58907d6080c72935e4c6ff087ae`. MIT licence, favicon and `.nojekyll` preserved. Git history retains all prior files.
 
-## Exact blocker and action
-1. Commit tested static assets to public repository main branch, preserving existing MIT licence.
-2. Confirm GitHub remote source matches the intended static build.
-3. Enable GitHub Pages from repository Settings > Pages > Deploy from branch > `main` > `/(root)` and save if not already enabled.
-4. Verify actual public URL, game start, one turn and 2040 end-to-end before marking COMPLETE.
+## Build decisions
 
-## Recovery and risks
-- Local artefact: chokepoint-2040.zip.
-- No existing repositories or files were modified.
-- Git version control should provide rollback once published.
-- Simplified and fictional strategic model. Scores are game assumptions, not forecasts; corporate names are fictional composites.
-- Current code has no external runtime dependencies.
+- Pure browser JavaScript and SVG, no build dependency, server, login or paid API.
+- Shared state for 12 countries, six markets and seven fictional corporate groups.
+- Separate discovery, IP ownership, know-how, production and value retained.
+- Persistent contracts, recurring fees, supplier concentration, switching friction and alternative sourcing.
+- Finite power/water/food/skills and institutional limits; infrastructure reduces operating bottlenecks and costs.
+- Nineteen policy actions, three per brief; state-dependent crises; horizon-aware final turns.
+- Compact cabinet and consequence screens; deeper model details are optional.
+- Old v2 saves preserved separately; v3 validation uses action replay.
+- Rejected general-purpose game engines and scientific-model compilers. Research and sources: `docs/DESIGN_RESEARCH.md`.
 
-## V0.2 usability and state update (13 November 2026)
-- Goal: clarify two calendar quarters per turn, cash deductions/replenishment, and how prosperity, value capture, resilience and public mandate influence play. Make country and company responses visible with positive/neutral/negative cues.
-- [SRC] Local JS syntax checks and 9 engine test cases PASS, including 12 countries x 3 policies through 2040, capital conservation for all 28 turns, different global market pressures by player choices, bot country reactions, and market state sanity across multiple seeds.
-- [SRC] Headless Chromium (system executable) completed a mobile 390x844 flow using in-memory HTML/CSS/ES module injection: country selection, India first decision, after-action card, cash ledger, all 28 choices, end state; 0 JavaScript page errors. Direct local HTTP navigation from the test browser was blocked by runtime policy; inline injection served as narrow runtime smoke test.
-- Design: version 2 simulation state includes persistent shared global pressure, non-playable governments and delayed foreign capacity investments. Each turn shows compact national and global outcome headline, sign/icon/colour impact cues, reconciled capital equation and expandable causal details.
-- [RISK] Generated non-playable country policies are deterministic illustrative game rules, not predictions. Source v1 save files are retained under their original storage key but not loaded by v2; users start fresh with richer simulation state.
-- [SRC] Source committed to main as cdea3c5621838b5fc9516aa799f535eadcd9de8e. Remote index.html and src/engine.js fetched and verified after commit. GitHub Pages run 43431512638 completed SUCCESS.
-- [GAP] Hosted public HTTP path could not be fetched independently because available runtimes block or cannot resolve the GitHub Pages address. Final user-browser smoke test is outstanding.
-- Rollback: previous verified GitHub commit before V0.2; revert V0.2 via GitHub history if regression.
+## Verification so far
 
-### V0.2 deployment evidence
-- [SRC] GitHub source commit cdea3c5621838b5fc9516aa799f535eadcd9de8e: eight files updated; .nojekyll, MIT licence and favicon preserved.
-- [SRC] Pages Actions deployment https://github.com/rjjainrahul97/chokepoint-2040/actions/runs/43431512638 completed SUCCESS. Source branch: main, path: /.
-- [SRC] Test output: 9/9 PASS, 28-turn synthetic playthrough on mobile headless Chromium, no JS page errors.
-- [GAP] External request to https://rjjainrahul97.github.io/chokepoint-2040/ was blocked by the available web and local execution runtimes. User must confirm opening and advancing a turn at this URL.
-- Rollback to previous source commit d222c25fd781b7041fce406c8bf13347af3efd91 if needed. Note: v2 saves are separate from legacy v1 saves.
+[SRC] `npm test`: 20/20 passed, including 132 complete 28-turn country/policy campaigns, immutability and replay, capital settlement for all governments, projects, AI/resource stress, discovery acceleration, production complements, import vulnerability, infrastructure cost effects, food/water interactions, contract costs, corporate regulation, China response and sensible final turns.
+
+[SRC] `node tools/balance.mjs`: 1,128 complete campaigns, 31,584 turns, 354,816 government ledger checks. Twelve countries, eight seeds, eleven policies, plus 72 varied starting-condition campaigns. Ten primary ending types observed. Every country has a tested score route >=50. Several strategies win or tie across worlds; no single tested strategy wins every country. Full summary and inspectable campaigns are in `test-results/`.
+
+[INF] Adaptive and infrastructure policies are often strong. This reflects complementarity but remains a balance risk; the finite sweep is not proof of perfect balance. Research, industry and network strategies also win in observed worlds.
+
+[GAP] Current release public browser playthrough, 390px layout checks, save/reload, sharing and screenshots are still pending. Do not treat this checkpoint as a completed deployment acceptance.
+
+## Known limits and failed tools
+
+[ASM] Country starts, market parameters, policy utilities and scientific thresholds are fictional game design assumptions, not empirical estimates. Six bounded markets approximate supply access; no full bilateral economic clearing.
+
+[GAP] Human fun, first-time comprehension and 5-7 minute duration have not been measured with users. Automated clicks cannot prove those qualities.
+
+[SRC] Local headless Chromium launch failed with `socket() failed: Operation not permitted`. Native Git push dry-run failed because shell Git has no GitHub credential. The connected GitHub API is writable and is the publication route. Public browser testing uses the available shared Chrome interface. No credential or sandbox weakening was attempted.
+
+## Recovery
+
+Restore game files from rollback branch in a new main commit. Pages remains on the existing main/root setup. Keep old and new save keys; neither requires a server-side migration.
+
+## Next action
+
+Publish the tested source through the GitHub connector, verify Pages assets against source, play complete public campaigns at mobile width, repair any failures, and replace this pending evidence with the observed release and deployment proof.

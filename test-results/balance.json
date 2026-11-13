@@ -1,0 +1,72 @@
+{
+  "generated": "2026-11-13T16:06:00.699Z",
+  "campaigns": 1128,
+  "baselineCampaigns": 1056,
+  "startingConditionCampaigns": 72,
+  "seeds": [
+    1,
+    17,
+    97,
+    817,
+    2040,
+    3011,
+    9109,
+    213097
+  ],
+  "policies": [
+    "ai",
+    "imports",
+    "infrastructure",
+    "science",
+    "industry",
+    "network",
+    "corporate",
+    "austerity",
+    "adaptive",
+    "random",
+    "adversarial"
+  ],
+  "turns": 31584,
+  "ledgerChecks": 354816,
+  "restrictions": 4200,
+  "turnsRequiringBorrowing": 1697,
+  "endings": {
+    "balanced": 193,
+    "diversification": 473,
+    "research": 81,
+    "capture": 38,
+    "interdependence": 23,
+    "fragile": 95,
+    "leadership": 20,
+    "backlash": 122,
+    "substitution": 10,
+    "fiscal": 1
+  },
+  "scoreWinsOrTies": {
+    "infrastructure": 59,
+    "adaptive": 71,
+    "network": 10,
+    "industry": 12,
+    "science": 3,
+    "adversarial": 1
+  },
+  "bestScoreByCountry": {
+    "india": 76,
+    "usa": 87,
+    "china": 77,
+    "germany": 76,
+    "france": 84,
+    "saudi": 67,
+    "uae": 74,
+    "japan": 68,
+    "korea": 72,
+    "australia": 90,
+    "indonesia": 72,
+    "brazil": 79
+  },
+  "limits": [
+    "Finite policy sweep does not prove absence of an exploit.",
+    "Score weights are design assumptions; trade-offs also matter across individual metrics.",
+    "Human completion time and enjoyment require playtesting."
+  ]
+}
