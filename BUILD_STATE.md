@@ -1,7 +1,7 @@
 # Build checkpoint - CHOKEPOINT 2040
 
 Build ID: CP-2040-20261113
-Status: PARTIAL (local verified; GitHub upload/publishing in progress)
+Status: PARTIAL (source uploaded and remotely verified; GitHub Pages activation and live browser check pending)
 
 ## Goal
 Free, phone-first strategy game at a publicly accessible GitHub Pages URL, playable in approximately 5-7 minutes.
@@ -40,3 +40,13 @@ Free, phone-first strategy game at a publicly accessible GitHub Pages URL, playa
 - Git version control should provide rollback once published.
 - Simplified and fictional strategic model. Scores are game assumptions, not forecasts; corporate names are fictional composites.
 - Current code has no external runtime dependencies.
+
+## 2026-11-13 published-source checkpoint
+- [SRC] Public repository: https://github.com/rjjainrahul97/chokepoint-2040 (main; writable).
+- [SRC] Commit containing game: 4f7a2582ccdec0a5c5b35771a85e61303157bdd3. Remote index.html, src/engine.js, and src/style.css fetched successfully after the push.
+- [SRC] Original MIT licence preserved; no existing unrelated files overwritten.
+- [SRC] Local npm test: 5/5 passing; source syntax checks passed.
+- [GAP] GitHub Pages has not been enabled or verified from the live site. GitHub connector exposes repository writes but no Pages settings mutation; a read-only Pages probe was rejected as unsupported.
+- User action: Settings > Pages > Deploy from branch > main > /(root) > Save.
+- Next verification: check the public game URL, start a run, advance one turn, and complete an entire 28-turn campaign; update status to COMPLETE only after external readback.
+- Rollback: revert this commit via GitHub history; retained prior commit 3c4bf9f15c64c7df9c8e545f5e2afd0609ed1ea8.
