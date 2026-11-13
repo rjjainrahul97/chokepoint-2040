@@ -1,7 +1,7 @@
 # Build checkpoint - CHOKEPOINT 2040
 
 Build ID: CP-2040-20261113
-Status: PARTIAL (local verified; GitHub upload/publishing in progress)
+Status: PARTIAL (GitHub source and Pages deployment verified; live hosted user path not independently observed)
 
 ## Goal
 Free, phone-first strategy game at a publicly accessible GitHub Pages URL, playable in approximately 5-7 minutes.
@@ -47,5 +47,13 @@ Free, phone-first strategy game at a publicly accessible GitHub Pages URL, playa
 - [SRC] Headless Chromium (system executable) completed a mobile 390x844 flow using in-memory HTML/CSS/ES module injection: country selection, India first decision, after-action card, cash ledger, all 28 choices, end state; 0 JavaScript page errors. Direct local HTTP navigation from the test browser was blocked by runtime policy; inline injection served as narrow runtime smoke test.
 - Design: version 2 simulation state includes persistent shared global pressure, non-playable governments and delayed foreign capacity investments. Each turn shows compact national and global outcome headline, sign/icon/colour impact cues, reconciled capital equation and expandable causal details.
 - [RISK] Generated non-playable country policies are deterministic illustrative game rules, not predictions. Source v1 save files are retained under their original storage key but not loaded by v2; users start fresh with richer simulation state.
-- [GAP] Source not yet committed and latest live Pages run not yet verified for this version. Next: atomic push, remote readback, Pages deployment and public browser smoke test.
+- [SRC] Source committed to main as cdea3c5621838b5fc9516aa799f535eadcd9de8e. Remote index.html and src/engine.js fetched and verified after commit. GitHub Pages run 43431512638 completed SUCCESS.
+- [GAP] Hosted public HTTP path could not be fetched independently because available runtimes block or cannot resolve the GitHub Pages address. Final user-browser smoke test is outstanding.
 - Rollback: previous verified GitHub commit before V0.2; revert V0.2 via GitHub history if regression.
+
+### V0.2 deployment evidence
+- [SRC] GitHub source commit cdea3c5621838b5fc9516aa799f535eadcd9de8e: eight files updated; .nojekyll, MIT licence and favicon preserved.
+- [SRC] Pages Actions deployment https://github.com/rjjainrahul97/chokepoint-2040/actions/runs/43431512638 completed SUCCESS. Source branch: main, path: /.
+- [SRC] Test output: 9/9 PASS, 28-turn synthetic playthrough on mobile headless Chromium, no JS page errors.
+- [GAP] External request to https://rjjainrahul97.github.io/chokepoint-2040/ was blocked by the available web and local execution runtimes. User must confirm opening and advancing a turn at this URL.
+- Rollback to previous source commit d222c25fd781b7041fce406c8bf13347af3efd91 if needed. Note: v2 saves are separate from legacy v1 saves.
