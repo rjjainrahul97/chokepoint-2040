@@ -86,9 +86,28 @@ export function getEvent(s){
  return {id,title,text,choices,half:halfLabel(s.turn)};
 }
 export function getOptions(s){const e=getEvent(s);if(!e)return [];const n=player(s);const opts=e.choices.map(id=>describeAction(s,n,id));if(!opts.some(x=>x.available))opts[2]=describeAction(s,n,'conserve');return opts;}
-export function describeAction(s,n,id){const a=ACTIONS[id];const duration=a.duration+(a.duration>1&&n.caps.institutions<40?1:0);let cost=a.cost;
+export function describeAction(s,n,id){const a=ACTIONS[id];if(!a)throw Error('Unknown action');const duration=a.duration+(a.duration>1&&n.caps.institutions<40?1:0);let cost=a.cost;
  if(['ai','factory','pilot','grid','freight'].includes(id))cost=round(cost*(.82+.18*(s.world.markets.equipment?.price||1)));
- return {...a,...(id==='imports'&&n.id==='china'?{upside:'Fast output from lower-cost foreign equipment.',downside:'Foreign toolchains and switching costs compound.'}:{}),id,cost,duration,available:n.cash>=cost,afterHorizon:s.turn+duration>28,detail:id==='royalties'?(n.ip?`${n.ip} owned IP available for licensing.`:'No owned IP yet. This earns no royalties.'):duration?`Operational ${halfLabel(s.turn+duration-1)}${s.turn+duration>28?' (after the horizon)':''}.`:'Takes effect this half-year.'};}
+ return {...a,...(id==='imports'&&n.id==='china'?{upside:'Fast output from lower-cost foreign equipment.',downside:'Foreign toolchains and switching costs compound.'}:{}),id,cost,duration,available:n.cash>=cost,financing:fundingQuote(s,n,cost,n.cash>=cost?'full':'gap'),afterHorizon:s.turn+duration>28,detail:id==='royalties'?(n.ip?`${n.ip} owned IP available for licensing.`:'No owned IP yet. This earns no royalties.'):duration?`Operational ${halfLabel(s.turn+duration-1)}${s.turn+duration>28?' (after the horizon)':''}.`:'Takes effect this half-year.'};}
+// Voluntary project credit, separate from the legacy emergency bill facility.
+export const CREDIT_RATE=.035;
+const cents=x=>Math.round(x*100);
+function fundingQuote(s,n,cost,mode){
+ const recent=n.id===s.countryId?s.history.slice(-3).map(h=>h.ledger.tax):[];
+ const tax=round(recent.length?mean(recent):(n.ledger?.tax??(3.2+n.prosperity*.025+n.captured*.018+(COUNTRIES[n.id].budget-9)*.22)));
+ const limit=round(Math.min(tax*6,tax*.35/CREDIT_RATE)),room=round(Math.max(0,limit-n.debt));
+ const amount=mode==='full'?cost:round(Math.max(0,cost-n.cash));
+ const eligible=amount>0&&cents(amount)<=cents(room);
+ return {mode,amount,eligible,rate:CREDIT_RATE,creditLimit:limit,creditRoom:room,taxBaseline:tax,
+  nextInterest:round((n.debt+amount)*CREDIT_RATE),addedInterest:round(amount*CREDIT_RATE),firstInterestTurn:s.turn+1,
+  reason:amount<=0?'No funding gap.':eligible?'':`Loan needs ${amount}; remaining project credit is ${room}. Repay debt or choose a cheaper policy.`};
+}
+export function financingQuote(s,id,mode='gap'){
+ if(!['gap','full'].includes(mode))throw Error('Unknown financing mode');
+ const a=describeAction(s,player(s),id);return fundingQuote(s,player(s),a.cost,mode);
+}
+// Preserve old string actions and make financing part of deterministic saved replay.
+export function historyChoice(h){return h.financing?{id:h.action,financing:h.financing.mode}:h.action;}
 function addCap(n,key,v){n.caps[key]=round(clamp(n.caps[key]+v));}
 function schedule(s,n,id,a){n.projects.push({id:`${n.id}:${s.turn}:${id}`,action:id,label:a.title,started:s.turn,due:s.turn+a.duration,work:a.duration,gain:clone(a.gain||{})});}
 function enact(s,n,id){const a=describeAction(s,n,id);if(!a.available)throw Error('Choice unavailable');n.cash=round(n.cash-a.cost);n.policy.push({turn:s.turn,id});let message='',dependency='';
@@ -160,7 +179,7 @@ export function productiveState(s,n){const c=n.caps,rest=clamp(restrictionExposu
  n.innovationOutput=round(Math.min(n.ip*10,n.knowhow,n.output,c.refining+15)*(1-rest));
  n.captured=round(clamp((n.output*.45+n.innovationOutput*.55)*(1-n.corporate*.003)*(n.contracts.some(x=>x.firm==='meridian'&&x.until>s.turn)?.88:1)));
  return {power,water,inputs,equipment,rest};}
-function economy(s,n,notes,immediate=0,spending=0,opening=n.cash){const c=n.caps;const q=productiveState(s,n);
+function economy(s,n,notes,immediate=0,spending=0,opening=n.cash,projectBorrowing=0){const c=n.caps;const q=productiveState(s,n);
  const scienceRate=c.labs/32*(.45+c.compute/60)*clamp(c.talent/60,.3,1.3)*Math.min(q.power,q.water)*(1-n.stress.talent/150);
  n.science=round(n.science+scienceRate);
  const threshold=10+roll(s,`${n.id}:breakthrough:${n.ip}`)*5;
@@ -175,15 +194,16 @@ function economy(s,n,notes,immediate=0,spending=0,opening=n.cash){const c=n.caps
  const contractFees=n.contracts.filter(x=>x.until>s.turn).reduce((a,x)=>a+x.fee,0);
  const operations=round(.35+c.compute*.024+c.labs*.013+(c.refining+c.manufacturing)*.003);
  const imports=round((.25+n.importBoost*.018)*(s.world.markets.materials.price)*(1+n.lockin/220)+q.rest*.9);
- const interest=round(n.debt*.035), emergency=round((n.stress.energy+n.stress.water+n.stress.food)*.012);
+ const interest=round((n.debt-projectBorrowing)*CREDIT_RATE), emergency=round((n.stress.energy+n.stress.water+n.stress.food)*.012);
  const switching=n.policy.at(-1)?.turn===s.turn&&n.policy.at(-1)?.id==='diversify'?round(n.lockin*.025):0;
  const retirement=n.policy.at(-1)?.turn===s.turn&&n.policy.at(-1)?.id==='repay'?round(opening-spending+immediate-n.cash):0;
  const other=round(operations+imports+interest+emergency+contractFees+switching+retirement);
  const tax=round(3.2+n.prosperity*.025+n.captured*.018+(COUNTRIES[n.id].budget-9)*.22);
- const income=round(tax+immediate);let closing=round(opening-spending-other+income);let borrowing=0;
+ const income=round(tax+immediate);let closing=round(opening+projectBorrowing-spending-other+income);let borrowing=0;
  if(closing<0){borrowing=round(-closing);n.debt=round(n.debt+borrowing);closing=0;notes.push(`Treasury borrowed ${borrowing} to pay operating bills.`);}
  n.cash=closing;
- n.ledger={opening,spending,operations,imports,interest,emergency,contractFees,switching,retirement,other,tax,receipts:immediate,borrowing,income:round(income+borrowing),closing};
+ n.ledger={opening,spending,operations,imports,interest,emergency,contractFees,switching,retirement,other,tax,receipts:immediate,borrowing,income:round(income+borrowing+projectBorrowing),closing};
+ if(projectBorrowing){n.ledger.borrowing=round(borrowing+projectBorrowing);n.ledger.projectBorrowing=projectBorrowing;n.ledger.deficitBorrowing=borrowing;}
  n.importBoost=round(Math.max(0,n.importBoost-.9));n.lockin=round(Math.max(0,n.lockin-.15));
  if(n.diversification>0)n.concentration=round(Math.max(8,n.concentration-.15));
  n.contracts=n.contracts.filter(x=>x.until>s.turn);n.settled++;
@@ -225,20 +245,31 @@ export function metrics(s){const n=player(s);const autonomy=clamp(100-n.concentr
  return {prosperity:round(n.prosperity),value:round(n.captured),autonomy:round(autonomy),mandate:round(n.mandate),environment:round(n.environment)};}
 export function dependency(s){const n=player(s);return Object.entries(GOODS).map(([id,name])=>{const m=s.world.markets[id];return {id,name,controller:m.controller,price:m.price,fill:m.fill,domestic:round(n.caps[GOOD_CAP[id]]),risk:round(clamp(id==='materials'?n.concentration+n.lockin*.2-n.diversification*.5:100-n.caps[GOOD_CAP[id]]+n.lockin*.12)),substitute:id==='materials'?'Recycle, diversify, process at home':id==='cloud'?'Open models, domestic compute':id==='equipment'?'Pilot engineering, shared licences':'Infrastructure or alternative imports'};});}
 function advanceTurn(original,choiceId,hold=false){
- if(original.turn>=28)throw Error('Game already finished');const opts=getOptions(original);const opt=opts.find(x=>x.id===choiceId);if(!hold&&(!opt||!opt.available))throw Error('Choice unavailable');
+ if(original.turn>=28)throw Error('Game already finished');
+ let financing=null;
+ if(!hold&&typeof choiceId==='object'&&choiceId!==null){
+  if(Object.keys(choiceId).some(k=>!['id','financing'].includes(k))||!['gap','full'].includes(choiceId.financing))throw Error('Invalid financing request');
+  financing=choiceId.financing;choiceId=choiceId.id;
+ }
+ const opts=getOptions(original);const opt=opts.find(x=>x.id===choiceId)||(choiceId==='repay'&&player(original).debt>0?describeAction(original,player(original),'repay'):null);
+ const quote=!hold&&opt&&financing?financingQuote(original,choiceId,financing):null;
+ if(!hold&&(!opt||(financing?!quote.eligible:!opt.available)))throw Error(quote?.reason||'Choice unavailable');
  const s=clone(original),n=player(s),opening=n.cash,before=metrics(s),beforeMarkets=clone(s.world.markets);const notes=[];
+ const projectBorrowing=quote?.amount||0;
+ if(projectBorrowing){n.cash=round(n.cash+projectBorrowing);n.debt=round(n.debt+projectBorrowing);notes.push(`Borrowed ${projectBorrowing} for this decision. Interest starts ${halfLabel(s.turn+1)} at 3.5% per half-year.`);}
  const r=hold?{action:'hold',cost:0,option:{title:'Maintain committed plans',duration:0},message:'No new discretionary policy.',dependency:''}:enact(s,n,choiceId);if(hold)n.policy.push({turn:s.turn,id:'hold'});const receipts=choiceId==='royalties'?round(n.cash-(opening-r.cost)):0;
  const shock=setShocks(s);const countries=moveGovernments(s),companies=moveFirms(s);
  for(const x of Object.values(s.world.nations))mature(s,x,x.id===s.countryId?notes:[]);
  clearMarkets(s);
  for(const x of Object.values(s.world.nations)){
-  economy(s,x,x.id===s.countryId?notes:[],x.id===s.countryId?receipts:0,x.id===s.countryId?r.cost:(x._spending||0),x.id===s.countryId?opening:(x._opening??round(x.cash+(x._spending||0))));delete x._opening;delete x._spending;
+  economy(s,x,x.id===s.countryId?notes:[],x.id===s.countryId?receipts:0,x.id===s.countryId?r.cost:(x._spending||0),x.id===s.countryId?opening:(x._opening??round(x.cash+(x._spending||0))),x.id===s.countryId?projectBorrowing:0);delete x._opening;delete x._spending;
  }
  clearMarkets(s);s.world.frontier=round(mean(Object.values(s.world.nations).map(x=>x.ip)));s.world.restrictions=s.world.restrictions.filter(x=>x.until>s.turn);
  const after=metrics(s);const delta=Object.fromEntries(Object.keys(before).map(k=>[k,round(after[k]-before[k])]));
  const news=[...countries,...companies];s.world.news=news;
  const changed=Object.keys(GOODS).sort((a,b)=>Math.abs(s.world.markets[b].price-beforeMarkets[b].price)-Math.abs(s.world.markets[a].price-beforeMarkets[a].price))[0];
  const result={turn:s.turn,half:halfLabel(s.turn),event:hold?'Committed-plan outlook':getEvent(original).title,action:hold?'hold':choiceId,choice:r.option.title,domestic:r.message||`${r.option.title}: ${r.option.duration?'capital committed; construction has begun.':'policy took effect.'}`,dependency:r.dependency,notes,shock,delta,stress:clone(n.stress),ledger:clone(n.ledger),countries,companies,global:`${GOODS[changed]} price ${beforeMarkets[changed].price.toFixed(2)} → ${s.world.markets[changed].price.toFixed(2)}×; supply ${s.world.markets[changed].supply}, demand ${s.world.markets[changed].demand}.`,later:n.projects.map(p=>({label:p.label,due:p.due})),output:n.output,unitCost:n.unitCost,ip:n.ip,captured:n.captured};
+ if(projectBorrowing)result.financing={mode:financing,amount:projectBorrowing,rate:CREDIT_RATE,firstInterestTurn:original.turn+1};
  s.history.push(result);s.lastResult=result;s.turn++;return s;
 }
 export function takeTurn(original,choiceId){return advanceTurn(original,choiceId);}
@@ -284,4 +315,4 @@ export function choosePolicy(s,policy='adaptive'){const opts=getOptions(s).filte
  if(policy==='adaptive'){const n=player(s);const need=n.stress.water>8?'water':n.stress.energy>8?'grid':n.stress.food>10?'food':n.debt>8?'repay':n.ip&&n.knowhow<55?'pilot':n.caps.compute<35?'ai':n.caps.manufacturing<65?'factory':'diversify';if(opts.some(x=>x.id===need))return need;policy='infrastructure';}
  const ranking=POLICIES[policy]||POLICIES.infrastructure;return opts.sort((a,b)=>ranking.indexOf(a.id)-ranking.indexOf(b.id))[0].id;}
 export function runWithPolicy(country='india',seed=2040,policy='adaptive'){let s=createGame(country,seed);while(s.turn<28)s=takeTurn(s,choosePolicy(s,policy));return s;}
-export function validSave(x){try{if(x?.version!==VERSION||!COUNTRIES[x.countryId]||!Number.isSafeInteger(x.seed)||x.seed<1||x.seed>2147483647||!Number.isInteger(x.turn)||x.turn<0||x.turn>28||x.history.length!==x.turn)return false;let s=createGame(x.countryId,x.seed);for(const h of x.history){if(h.turn!==s.turn)return false;s=takeTurn(s,h.action);}return JSON.stringify(s)===JSON.stringify(x);}catch{return false;}}
+export function validSave(x){try{if(x?.version!==VERSION||!COUNTRIES[x.countryId]||!Number.isSafeInteger(x.seed)||x.seed<1||x.seed>2147483647||!Number.isInteger(x.turn)||x.turn<0||x.turn>28||x.history.length!==x.turn)return false;let s=createGame(x.countryId,x.seed);for(const h of x.history){if(h.turn!==s.turn)return false;s=takeTurn(s,historyChoice(h));}return JSON.stringify(s)===JSON.stringify(x);}catch{return false;}}

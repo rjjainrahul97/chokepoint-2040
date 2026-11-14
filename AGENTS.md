@@ -1,7 +1,7 @@
 # Repository working instructions
 
 - Read [docs/NEXT_VERSION_PLAN.md](docs/NEXT_VERSION_PLAN.md) before next-version work, plus [BUILD_STATE.md](BUILD_STATE.md) and [README.md](README.md). The latest user request governs.
-- Live v1.2 remains 2040/28 turns. Target v2 is CHOKEPOINT 2035, 18 half-years, 2027 H1 through 2035 H2. Planned mechanics are not shipped mechanics.
+- Current v1.3 repair retains 2040/28 turns and adds elective credit plus the thesis/outcome brief. See BUILD_STATE for release verification. Target v2 is CHOKEPOINT 2035, 18 half-years, 2027 H1 through 2035 H2. Planned mechanics are not shipped mechanics.
 - Preserve the existing public URL, useful assets, legacy saves and rollback history. No unrelated deletions, permission changes or paid services.
 - Keep deterministic JavaScript rules authoritative across turns, gates, forecasts and tests. No server/Python/runtime LLM needed.
 - Prioritise elective project finance, enforceable scoped contracts, negotiating actors, varied state-driven decisions and warned preventable failures. Follow the plan's causal vertical slice before content/art expansion.

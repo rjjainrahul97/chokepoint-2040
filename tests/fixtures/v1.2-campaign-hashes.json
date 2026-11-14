@@ -1,0 +1,293 @@
+{
+  "baseline": "69738d4b4e360fc80370682be7d3f8d88aa8f01a",
+  "campaigns": [
+    {
+      "country": "india",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "4fd41b2efdad006f9577986b879e33bec5994042ffd38e6862f71203aefee10a"
+    },
+    {
+      "country": "india",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "61558d97292e24747a8118edafc4b5730554e97f2e13e7c3efc1151e01a7a30b"
+    },
+    {
+      "country": "india",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "06e2d698c810e7e64c1e319ec571fb938a3c79c971b23dd40a9ebb5ea6ee07ca"
+    },
+    {
+      "country": "india",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "08ea6817e356b5ef3e1f5166375fe4a7db439caf081353f3dd6662a2f67574ba"
+    },
+    {
+      "country": "usa",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "ce965456b3e88ef4f720e2a8ec0baeab6c0bdc771e944864f71053b9eb28ed5c"
+    },
+    {
+      "country": "usa",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "55f3a21174ea926bf7ade9bd2aaefb75fcde79b2177d985f1ea72c401e76d79d"
+    },
+    {
+      "country": "usa",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "2158fbbca574fb5e5275093dc8d9a822cda78337a40888e1861424991a9c75af"
+    },
+    {
+      "country": "usa",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "f7e4fde7ab7d38e51cc6780b7426eb97944fbdce59e76e436fb2859b02baf407"
+    },
+    {
+      "country": "china",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "4fadf045a7385832dd7952058619b0122afa0ab0f7cb7bbb74680f05f21b0b0a"
+    },
+    {
+      "country": "china",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "2caeb8239d9543cba3f544b9f59d96b8866a83436f2dd6cb0adfa5fbe1047724"
+    },
+    {
+      "country": "china",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "e51a4274dcaa7577230397843c54c99df6464e96f1713c8dc0f9db3030939c36"
+    },
+    {
+      "country": "china",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "77ff241209c642fc1ad8f33e8af57f5f21d8801d26c477f6b7716ced898fb0e1"
+    },
+    {
+      "country": "germany",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "73d8454f25cc6de7b96c20ff14a59a9588d5865b4d42e1b51635102bf5f82c64"
+    },
+    {
+      "country": "germany",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "ee3ff13ab8dfaf61eb5f0166c4d75bf3c1f8e9c6db1f3ae9017829d24c9cf813"
+    },
+    {
+      "country": "germany",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "349d93d4a025c4c23ca23933cf6c02e0e52436967107aed0123cb63a8ecbc0d4"
+    },
+    {
+      "country": "germany",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "80fccaa66164cad2aa3b12ebc3eec10fa100545f810702df969b14485d625c4b"
+    },
+    {
+      "country": "france",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "ab0765a3e08eebb3942742710a7933acfbd4a618ee608a5a2fe5449b995a7556"
+    },
+    {
+      "country": "france",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "64777c1652d6a89e493e7b5237b949384e0540bdd680f4d8e18726202cfa6972"
+    },
+    {
+      "country": "france",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "33b76955e1000f352aae5e42aa0f1894c9955b33495c5e68c14d2271baf974f6"
+    },
+    {
+      "country": "france",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "22b4753a382c972dd191533df89d686665094dfa0144bd2d283ed3afa8ecebf3"
+    },
+    {
+      "country": "saudi",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "8d63e804cfe135d7b2db433b02c0d8b73886c9dbd749c5d3264db1e66517203b"
+    },
+    {
+      "country": "saudi",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "08ec30b203b65d59672d0a34f0e084a87f57eec96cc0ebb0c8ad56bcd1444f95"
+    },
+    {
+      "country": "saudi",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "e73acd1fcadd013391612c7ab207883a5ca1e7f0256de036335bd3358a1cd191"
+    },
+    {
+      "country": "saudi",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "d67a3a468876b0042d696b65c2dde53a3ff8f46ea51cda2ae0f6b617b0c6a91e"
+    },
+    {
+      "country": "uae",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "19f9e2c53f53a209d0456e549f2b0bd3f317cb149d4963e8678e3a4885672efd"
+    },
+    {
+      "country": "uae",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "f49849809a7141804e2230e9e94e8aadc6f7da57fcd722bcea5cb2cf7062c196"
+    },
+    {
+      "country": "uae",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "0edbd3b7139c01b8e5674ec0226877b7e652d5721628f0da6a2bef2be46a00c8"
+    },
+    {
+      "country": "uae",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "be44deda44f9b3c347a809ce08ac5b2224cc974e30fefd2c53c6e83ccf80b51c"
+    },
+    {
+      "country": "japan",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "c40febc46f9801be4c461e225894c04b5401f95a234e1dad38af3b509c47dfd2"
+    },
+    {
+      "country": "japan",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "6eda160ec1e9a04584c3bd0658773cdf00a861c469b94344e4d479195403fa81"
+    },
+    {
+      "country": "japan",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "3be4d2a4f40bbed784d3be48ad1dff572669192fbb58bc550cb4ced6cc6d3934"
+    },
+    {
+      "country": "japan",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "bfec8854d8c9fac347c0181771fdd3b289c601e02acc84e7b1531d67f7abb36b"
+    },
+    {
+      "country": "korea",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "55e67f90383230731ade7544ab7241bf69acc16223356537e005a50268112663"
+    },
+    {
+      "country": "korea",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "74643bac503f7a762f82af91303602b0bfedc14a6ed184d716675cd3e71031e8"
+    },
+    {
+      "country": "korea",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "e7405cdedcf866393f9e2d1532e29db092fc1257908d86f6e5d774cd090fae9b"
+    },
+    {
+      "country": "korea",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "9570b544ce355a0fd39d29e9597f05efb901c49418f68c787f2f4f0e7210478d"
+    },
+    {
+      "country": "australia",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "08972697df26ac21f6da5d4f5cb194eeb5fcbb11b684ea6342f1022ee170b2b1"
+    },
+    {
+      "country": "australia",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "2bce995cb2a1761a171e73ea01d714c039c9a07ca0a289919ac20ad6fd6d60f2"
+    },
+    {
+      "country": "australia",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "96d01a038232f3a440e6d5388a68e42bc47f18298ef1128db58f8661d5cfe854"
+    },
+    {
+      "country": "australia",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "4590012ff6291762ae47e831d8b18892318c9ec0a8eab9256c204203346020ef"
+    },
+    {
+      "country": "indonesia",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "7da66a3db8dcd8f5ad893d6b806bcd2024e48dcba6f5c1403405bb770e063116"
+    },
+    {
+      "country": "indonesia",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "54927704f4e17f449999ebdce08aae7457e9cab3535c998733db3c05672f2bb7"
+    },
+    {
+      "country": "indonesia",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "76d002481174179f6c7fab5531903429904ed3965a707fb0fd5dba43d5a138a9"
+    },
+    {
+      "country": "indonesia",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "a14536b7f15054f422b4a2c48ab64f9822ebbc26834103dffed8340f71d12921"
+    },
+    {
+      "country": "brazil",
+      "seed": 17,
+      "policy": "adaptive",
+      "sha256": "7ea9f60458894041fa8134066094313db9787d75a12d561bf2d25270797f019a"
+    },
+    {
+      "country": "brazil",
+      "seed": 17,
+      "policy": "adversarial",
+      "sha256": "6667f7443cb894f2d8d9ebee737a1aab0f4e72cf95391abef5aa177e05ec5a81"
+    },
+    {
+      "country": "brazil",
+      "seed": 17,
+      "policy": "science",
+      "sha256": "890d1b03a441d8b8a864e9c062eef8320887cd93f13adbd66f5efed5963a010d"
+    },
+    {
+      "country": "brazil",
+      "seed": 17,
+      "policy": "austerity",
+      "sha256": "17a3711695da926a1edc2200fe807558116feb30b136543c1ad51165394df4fb"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "url": "https://rjjainrahul97.github.io/chokepoint-2040/review-v13/mobile.html?country=india&seed=2040",
+  "candidateCommit": "1ab280e97e6519dab0fc8c8101de98022818209d",
+  "country": "india",
+  "seed": 2040,
+  "turns": 28,
+  "actions": [
+    "ai",
+    "factory",
+    "grid",
+    "ai",
+    "pilot",
+    "research",
+    "factory",
+    "water",
+    "repay",
+    "grid",
+    "pilot",
+    "welfare",
+    "conserve",
+    "conserve",
+    "conserve",
+    "welfare",
+    "conserve",
+    "partner",
+    "concede",
+    "conserve",
+    "royalties",
+    "conserve",
+    "conserve",
+    "repay",
+    "royalties",
+    "repay",
+    "repay",
+    "repay"
+  ],
+  "ending": "Sovereign, on borrowed time",
+  "finalDebt": 28.7,
+  "normalReports": true,
+  "reloadAfterTurn": 14,
+  "gapLoanWitness": {
+    "opening": 5.48,
+    "cost": 6.02,
+    "borrowed": 0.54,
+    "firstPeriodInterest": 0,
+    "nextPeriodTax": 4.67,
+    "nextPeriodInterest": 0.02
+  },
+  "fullLoanWitness": {
+    "amount": 7.03,
+    "cashAfter": 16.77,
+    "principal": 7.03
+  },
+  "loanCancellationDidNotAdvanceTurn": true,
+  "repaymentOutsideDeckVerified": true,
+  "widths": [
+    390,
+    320
+  ],
+  "narrowMeasuredClientWidth": 305,
+  "narrowMeasuredScrollWidth": 305,
+  "gameSourceConsoleErrors": 0,
+  "limits": [
+    "Phone-width shared Chrome, not a physical iPhone/Safari test.",
+    "Browser extension metadata errors are unrelated to game source.",
+    "Local preview inaccessible from browser (ERR_CONNECTION_REFUSED); used isolated Pages candidate."
+  ]
+}

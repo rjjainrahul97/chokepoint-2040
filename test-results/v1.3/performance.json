@@ -1,0 +1,12 @@
+{
+  "rawBytes": 197396,
+  "estimatedGzipBytes": 66533,
+  "desktopNodeRenderMedianMs": 9.258419000000004,
+  "desktopNodeRenderP95Ms": 11.846178000000009,
+  "runtimeLibraries": 0,
+  "portraitsLoaded": 0,
+  "limits": [
+    "Node timing is not a physical phone measurement.",
+    "Gzip sum is a local estimate, not a measured network transfer."
+  ]
+}

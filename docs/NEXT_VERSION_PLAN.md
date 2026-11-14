@@ -9,9 +9,17 @@ Last source inspection and existing-suite execution: 14 November 2026
 
 This is the canonical next-version implementation contract for Codex, Claude and human contributors. Read it before changing the engine. The latest user instructions take precedence. Implementation and deployment are authorised, but this revision records the requested logic first. Do not confuse planned features with shipped features. Do not claim that another assistant has read this file merely because it is public.
 
+## Current delivery note, 14 November 2026
+
+The immediate v1.3 repair implements elective project credit and the thesis/outcomes brief in the existing 28-turn game, without waiting for the full v2 ruleset or supplied portraits. It is an interest-only credit line at 3.5% per half-year, with first project interest next half-year, voluntary principal repayment and finite discretionary project credit. Fixed-term bonds, maturity/default mechanics, scoped-contract negotiations, leadership succession and the 18-turn ruleset remain pending. Read BUILD_STATE for deployment evidence. Do not describe this partial repair as v2 completion.
+
+The image request is [ART_ASSET_BRIEF.md](ART_ASSET_BRIEF.md), with two fictional representatives for every country and company, exact filenames and a Library-to-GitHub integration plan. Political and board changes must retain institutional obligations.
+
 ## 1. Product goal and scope
 
 **CHOKEPOINT 2035** retains the current brand, countries, useful mechanics and public URL. Govern from 2027 H1 through 2035 H2: **18 half-year decisions**, rather than 28. Keep `https://rjjainrahul97.github.io/chokepoint-2040/` so existing shared links work. Change the displayed title and metadata when v2 ships, not during this planning-only update.
+
+Rahul’s thesis, stated to the player: **Can AI-powered R&D improve national sovereignty and prosperity if done right?** The game tests this question rather than presuming the answer.
 
 The central question remains: can sovereign AI and accelerated research help a country escape industrial dependence without undermining prosperity, public finances, essential services and institutions? This is a replayable entertainment simulation, not a forecast or an argument that self-sufficiency must win.
 
@@ -21,7 +29,9 @@ Target campaign duration remains 5-7 minutes, including the brief, reports and e
 
 ### The brief players see
 
-> Lead your country from 2027 to 2035. Raise living standards and build an economy that can survive pressure from suppliers, lenders and powerful companies. Each half-year, choose one policy or deal. You can borrow, but interest reduces your future budget. Projects take time, contracts limit later choices, and other countries respond. Use AI, industry or trade to prosper. Keep essential services running and avoid default or losing public support.
+> Can AI-powered R&D improve national sovereignty and prosperity if done right? Explore that question as you lead your country from 2027 to 2035. Raise living standards and build an economy that can survive pressure from suppliers, lenders and powerful companies. Each half-year, choose one policy or deal. You can borrow, but interest reduces your future budget. Projects take time, contracts limit later choices, and other countries respond. Use AI, industry or trade to prosper. Keep essential services running and avoid default or losing public support.
+
+Explain possible outcomes: industrial leadership, profitable interdependence, diversification, discoveries manufactured abroad, growth dependent on foreign permission, fiscal exhaustion, failed substitution and corporate/social backlash. These are possibilities, not promised or exhaustive endings.
 
 Then show the selected country's two concrete ambitions, its most urgent constraint and three possible approaches. One adviser sentence per turn explains the immediate problem and next deadline. It should help the player understand the board, not prescribe an optimal strategy.
 
@@ -208,7 +218,7 @@ Before release, set two visible country-specific numeric ambitions and a safety 
 
 ## 12. Characters and the phone interface
 
-Use fictional country envoys and company executives as persistent representatives. They speak for assets, objectives and past agreements, rather than acting as decorative random dialogue. Keep the existing seven composite firms: Aster Cloud, Meridian Machines, Helix Materials, BlueWave Freight, GrainVault, NorthGrid Energy and Atlas Industries.
+Use fictional country envoys and company executives as persistent representatives. Provide at least two distinct 2D cartoon representatives per institution, with leadership/board reviews, persistent obligations and dialogue as specified in [ART_ASSET_BRIEF.md](ART_ASSET_BRIEF.md). They speak for assets, objectives and past agreements, rather than acting as decorative random dialogue. Keep the existing seven composite firms: Aster Cloud, Meridian Machines, Helix Materials, BlueWave Freight, GrainVault, NorthGrid Energy and Atlas Industries.
 
 Each character has a name, role, country/company, short agenda, stable portrait and remembered commitments. Relationship labels explain changes: honoured licence, rejected offer, breached offtake, shared project. Pressure tactics require leverage: controlling an input, financing a project, holding an exclusive contract or owning a critical asset. A disliked character without leverage cannot block everything.
 
@@ -303,9 +313,9 @@ Browser minimum: several complete campaigns spanning domestic AI, import-led par
 
 ## 16. Current status, risks and recovery
 
-[SRC] This revision changes documentation only. The shipped game remains v1.2 / 2040 / 28 turns, with upfront loan selection still missing. Existing graph and tax-funded interest servicing remain working capabilities. The 29-test baseline is passing.
+[SRC] The original planning revision changed documentation only. A subsequent v1.3 repair implements elective project credit and the thesis/outcomes brief in the retained 2040/28-turn game. See BUILD_STATE for release and public-verification status; the current suite has 36 passing tests. Existing history/conditional outlook remains intact.
 
-[GAP] No v2 rule, portrait, loan UI, diplomatic negotiation or failure timer has been implemented or playtested yet. The 3,168-campaign matrix, country target values, asset/performance targets and enjoyment assessment are pending.
+[GAP] The v1.3 credit UI does not complete v2. Portraits, diplomatic negotiations, enforceable scoped contracts, fixed-maturity loans, failure timers and the new horizon remain pending. The 3,168-campaign matrix, country target values, asset/performance targets and enjoyment assessment are pending.
 
 [RISK] Adding contracts and event variety without central gates would create more misleading text. Adding portraits before proving actor leverage would make the same shallow choices prettier. Implement the causal vertical slice first, then extend content and art.
 

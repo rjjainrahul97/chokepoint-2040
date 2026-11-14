@@ -1,5 +1,5 @@
 /* Plain-language layer: turns engine numbers into reasons, people and headlines. Reads state only; never changes it. */
-import {COUNTRIES,createGame,takeTurn,player} from './engine.js?v=4.5';
+import {COUNTRIES,createGame,takeTurn,player,historyChoice} from './engine.js?v=4.6';
 
 export const METRIC={
  prosperity:{icon:'🏠',name:'Living standards',means:'How well off households are'},
@@ -60,7 +60,7 @@ const PEOPLE={
 export const people=id=>PEOPLE[id].map(([name,role,place],i)=>({name,role,place,face:['👷','🧺','🧑‍🔬','🧑‍🌾'][i]}));
 
 // The state before the last decision, rebuilt by deterministic replay.
-export function previous(s){let p=createGame(s.countryId,s.seed);for(const h of s.history.slice(0,-1))p=takeTurn(p,h.action);return p;}
+export function previous(s){let p=createGame(s.countryId,s.seed);for(const h of s.history.slice(0,-1))p=takeTurn(p,historyChoice(h));return p;}
 
 const r1=x=>Math.round(x*10)/10;
 const top=(list,k=3)=>list.filter(x=>Math.abs(x[1])>=.05).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1])).slice(0,k);
@@ -95,7 +95,8 @@ export function vignettes(before,after){const a=player(after),b=player(before),h
  const online=h.notes.find(t=>t.includes(' online')),idea=h.notes.find(t=>t.startsWith('Breakthrough'));
  if(idea)add(engineer,`${engineer.name}'s lab in ${engineer.place} files a patent. ${COUNTRIES[after.countryId].name} now owns invention #${a.ip}. ${a.knowhow<45?'Nobody here can manufacture it yet: a pilot line would help.':'Local engineers can try to manufacture it.'}`,'positive');
  if(online)add(['Factories','Processing','magnet','pilot'].some(w=>online.includes(w))?worker:['AI','labs'].some(w=>online.includes(w))?engineer:home,`${online.replace(/\.$/,'')}: ${online.includes('skills gap')?'it works, but without enough engineers it runs below capacity.':'the project you started has finished and now counts.'}`,online.includes('skills gap')?'neutral':'positive');
- if(h.ledger.borrowing)add(home,`The treasury borrowed ${r1(h.ledger.borrowing)} to pay this half-year's bills. ${home.name} in ${home.place} will pay for that interest through future budgets.`,'negative');
+ if(h.ledger.projectBorrowing)add(home,`The treasury chose a loan of ${h.ledger.projectBorrowing} for this decision. Interest starts next half-year and leaves less revenue for public services.`,'neutral');
+ if(h.ledger.borrowing-(h.ledger.projectBorrowing||0)>0)add(home,`The treasury borrowed ${r1(h.ledger.borrowing-(h.ledger.projectBorrowing||0))} to pay this half-year's bills. ${home.name} in ${home.place} will pay for that interest through future budgets.`,'negative');
  if(a.stress.energy>3)add(worker,`${worker.name}'s shift at the ${worker.place} plant was cut. The grid cannot power homes, factories and data centres at once.`,'negative');
  if(a.stress.water>3||h.shock.includes('heatwave'))add(farmer,`${farmer.name} in ${farmer.place} watches the canal run low. Farms and factory cooling draw on the same water.`,'negative');
  if(a.stress.food>3)add(home,`${home.name}'s grocery bill jumped this month. Food supply is short, and voters notice.`,'negative');

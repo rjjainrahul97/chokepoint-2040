@@ -1,3 +1,35 @@
+# Current release card: elective debt, thesis and cartoon asset brief
+
+Build ID: CP2040-20261114-DEBT-BRIEF
+Status: CANDIDATE VERIFIED / ROOT DEPLOYMENT PENDING
+Version: 1.3 (current 28-turn ruleset; broader 2035 v2 remains pending)
+Public URL: https://rjjainrahul97.github.io/chokepoint-2040/
+
+## Changes and observed evidence
+
+- [SRC] Upfront gap/full project credit is implemented with explicit consent, finite discretionary credit, a 3.5% half-year rate, first interest next half-year and voluntary repayment. It is an interest-only credit line; no fixed maturity/default system is claimed.
+- [SRC] Exact reported case acceptance: cost 7.06, cash 4.66, chosen loan 2.40. Engine applies the project rather than rejecting the choice. Borrowing is recorded separately from tax/royalty income.
+- [SRC] Home brief now states Rahul's AI/R&D thesis and describes possible campaign outcomes. Artwork request and usage plan: [docs/ART_ASSET_BRIEF.md](docs/ART_ASSET_BRIEF.md); requested cast: [design/portrait-manifest.json](design/portrait-manifest.json).
+- [SRC] 36/36 tests passed. Forty-eight prior-release campaign hashes remain byte-equivalent; financed campaigns validate and replay with unchanged forecasts/history. A device backup before the first v1.3 decision supports rollback recovery.
+- [SRC] Finance sweep: 576 complete campaigns, 16,128 transitions, 193,536 ledgers, 4,192 chosen loans and 2,553 repayment turns. Credit rejected 5,485 over-limit options. See test-results/v1.3/finance-sweep.json.
+- [SRC] One complete normal-report candidate browser campaign: 28 India turns, seed 2040; loan cancellation, gap credit, repayment, turn-14 reload, ending and optional full credit/quick-report flow verified. Candidate ran on existing Pages after local preview failed with ERR_CONNECTION_REFUSED. No game-source console errors; unrelated browser-extension metadata errors observed.
+- [SRC] Candidate at 390px and 320px: no horizontal overflow; narrow document client/scroll widths both 305px, excluding its scrollbar. Physical iPhone/Safari and old-phone timing remain unverified.
+- [CALC] Locally estimated gzip total 66,533 bytes, zero runtime libraries, no portraits loaded. Desktop Node choice-preview/trajectory median 9.26ms, p95 11.85ms; these are not physical-phone measurements.
+
+## Acceptance and remaining work
+
+[SRC] Candidate snapshot: `1ab280e97e6519dab0fc8c8101de98022818209d`; Pages run `43587493944` SUCCESS. Root release and public acceptance evidence will be recorded after deployment. Existing production root remained untouched during candidate QA.
+
+[GAP] Art is requested, not supplied or integrated. Political/board succession, negotiations, enforced exclusivity, fixed-maturity debt, failure countdowns and CHOKEPOINT 2035/18 turns are still pending in the canonical next-version contract. The current release repairs borrowing and explanation without claiming those broader criteria.
+
+Rollback: `rollback/pre-elective-debt-20261114` -> `69738d4b4e360fc80370682be7d3f8d88aa8f01a`. Restore prior runtime files with a new commit, preserving history, new saves, candidate snapshots and supplied assets. Financed saves need the updated engine; a prior snapshot is retained at the save key plus `_before_v13`. Keep both before any recovery. No paid service, account permission change, runtime AI or new hosting.
+
+Next action: verify deployed root with a full campaign, then update this record. After that, continue the canonical 2035 vertical slice and import portraits when supplied.
+
+---
+
+## Historical planning and release records
+
 # Next-version build card: CHOKEPOINT 2035
 
 Build ID: CP2035-20261114-RULES

@@ -1,12 +1,28 @@
-# CHOKEPOINT 2040 v1.2
-
-**Next version: CHOKEPOINT 2035.** [Read the detailed goal, rules and implementation plan](docs/NEXT_VERSION_PLAN.md). The next version targets 18 half-years, elective loans, enforceable deals, negotiated world events, warned failures and persistent characters. This is a planning record; the live v1.2 game has not yet gained these features. Contributor entry points: [Claude](CLAUDE.md) and [agents](AGENTS.md).
+# CHOKEPOINT 2040 v1.3
 
 [Play the game](https://rjjainrahul97.github.io/chokepoint-2040/)
 
+**The question:** Can AI-powered R&D improve national sovereignty and prosperity if done right? Govern a country, build capabilities, manage household costs and discover whether your research becomes competitive production or someone else's opportunity.
+
+## New in v1.3: choose debt, see its cost
+
+- A policy costing more than cash remains selectable when project credit is available. Click it, review the cash gap and confirm borrowing. Affordable policies also offer full financing so you can retain cash.
+- Project loans cost 3.5% per half-year. Their first interest charge is next half-year and reduces the tax-funded budget. Principal remains outstanding until repaid and affects your ending. This release uses an interest-only credit line, not fixed-maturity bonds.
+- Treasury & borrowing shows the credit ceiling and offers a debt repayment policy each turn. Voluntary project credit is limited by recent tax revenue and existing debt. The legacy emergency facility still covers operating deficits.
+- The ledger separates taxes/earned receipts from borrowing. Loan mode and amount survive deterministic replay, save/reload, historical charts and forecasts. A pre-v1.3-action save backup is retained on device for rollback.
+- The opening explainer states the thesis, your job and possible outcomes, without promising that domestic AI or independence always wins.
+
+**Artwork request:** [2D cartoon brief, exact files and usage plan](docs/ART_ASSET_BRIEF.md). Two fictional representatives for each country/company: 38 portraits, eight in the first batch. The [manifest](design/portrait-manifest.json) labels them requested, not supplied. Leadership changes and dialogue are planned, not yet live.
+
+**Next version: CHOKEPOINT 2035.** [Detailed goal, rules and implementation plan](docs/NEXT_VERSION_PLAN.md). The wider 18-turn horizon, fixed-term debt, enforceable scoped contracts, negotiations, failure deadlines and succession remain pending. The current repair preserves 28-turn campaigns and the existing public URL. [Claude entry point](CLAUDE.md).
+
+Verification and rollback: [BUILD_STATE.md](BUILD_STATE.md), [v1.3 evidence](test-results/v1.3/). Before this release: `rollback/pre-elective-debt-20261114` at `69738d4b4e360fc80370682be7d3f8d88aa8f01a`. Restore runtime files in a new commit; do not reset shared history. Old cash-only campaigns remain byte-equivalent. For a newly financed save on an old engine, recover the device's `chokepoint_2040_save_v3_before_v13` backup into the original key only with an explicit user recovery action, retaining the financed save separately.
+
+## Previous visual release
+
 Reviewed visual release: decision previews, a top-of-turn solid history with dotted conditional outlook, score and rival comparisons, optional warning loops, a world map and production-capacity shares. Existing campaigns and game rules are preserved.
 
-The dotted path assumes **no new player choices**: queued projects, bills, research and autonomous world events continue for up to six half-years, ending at 2040. It is conditional, not guaranteed. Borrowing automatically covers cash deficits; interest is deducted from the tax-funded budget. There is no upfront loan option for unaffordable projects.
+The dotted path assumes **no new player choices**: queued projects, bills, research and autonomous world events continue for up to six half-years, ending at 2040. It is conditional, not guaranteed. Emergency borrowing covers cash deficits; v1.3 additionally offers explicit upfront project credit. Interest is deducted from the tax-funded budget.
 
 Review, tests, assumptions and limits: [v1.2 review](docs/V1_2_REVIEW.md). Rollback: `rollback/pre-v1.2-20261114` at `31c7b77819ef97e74d36751c36b22f2ee0ce48ec`.
 

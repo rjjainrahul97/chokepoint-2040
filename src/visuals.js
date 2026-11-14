@@ -1,6 +1,6 @@
 /* Visual components. Each returns an HTML/SVG string; none changes game state. No libraries. */
-import {COUNTRIES,GOODS,takeTurn,player,metrics,progressScore,supply,round,halfLabel,committedOutlook} from './engine.js?v=4.5';
-import {METRIC} from './story.js?v=5.1';
+import {COUNTRIES,GOODS,takeTurn,player,metrics,progressScore,supply,round,halfLabel,committedOutlook} from './engine.js?v=4.6';
+import {METRIC} from './story.js?v=5.2';
 import {MAP} from './map-data.js?v=1';
 const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const KEYS=['prosperity','autonomy','mandate','value'];
@@ -12,7 +12,7 @@ const metricsOf=(s,id)=>metrics({world:s.world,countryId:id});
 /* 1. Choice preview (Reigns-style dots, but with direction, because the engine is deterministic). */
 // States are immutable snapshots. A replay at the same turn may have different actions.
 const forecasts=new WeakMap();
-export function forecast(s,id){let options=forecasts.get(s);if(!options){options=new Map();forecasts.set(s,options);}if(!options.has(id)){let d=null;try{d=Object.freeze({...takeTurn(s,id).lastResult.delta});}catch{}options.set(id,d);}return options.get(id);}
+export function forecast(s,id){const key=typeof id==='string'?id:JSON.stringify(id);let options=forecasts.get(s);if(!options){options=new Map();forecasts.set(s,options);}if(!options.has(key)){let d=null;try{d=Object.freeze({...takeTurn(s,id).lastResult.delta});}catch{}options.set(key,d);}return options.get(key);}
 export function previewRow(s,id){const d=forecast(s,id);if(!d)return '';
  const parts=KEYS.map(k=>{const v=d[k],a=Math.abs(v),size=a<.3?0:a<1.5?1:a<4?2:3;const word=size===0?'barely moves':`${v>0?'up':'down'} ${['','a little','clearly','sharply'][size]}`;
   return `<span class="pv ${size?tone(v):'neutral'}" title="${METRIC[k].name}: ${word}"><i aria-hidden="true">${METRIC[k].icon}</i>${size?`<em aria-hidden="true">${v>0?'▲':'▼'}</em>`:''}<b class="dot s${size}" aria-hidden="true"></b><span class="sr">${METRIC[k].name} ${word}.</span></span>`;}).join('');
