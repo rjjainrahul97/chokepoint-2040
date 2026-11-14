@@ -241,9 +241,12 @@ export function takeTurn(original,choiceId){
  const result={turn:s.turn,half:halfLabel(s.turn),event:getEvent(original).title,action:choiceId,choice:r.option.title,domestic:r.message||`${r.option.title}: ${r.option.duration?'capital committed; construction has begun.':'policy took effect.'}`,dependency:r.dependency,notes,shock,delta,stress:clone(n.stress),ledger:clone(n.ledger),countries,companies,global:`${GOODS[changed]} price ${beforeMarkets[changed].price.toFixed(2)} → ${s.world.markets[changed].price.toFixed(2)}×; supply ${s.world.markets[changed].supply}, demand ${s.world.markets[changed].demand}.`,later:n.projects.map(p=>({label:p.label,due:p.due})),output:n.output,unitCost:n.unitCost,ip:n.ip,captured:n.captured};
  s.history.push(result);s.lastResult=result;s.turn++;return s;
 }
-export function score(s){const n=player(s),m=metrics(s),start=s.start;const w=COUNTRIES[s.countryId].weights;
+// One scoring rule for the outcome and the read-only historical chart.
+export function progressScore(countryId,start,m,debt=0){const w=COUNTRIES[countryId].weights;
  const progress=(m.prosperity-start.prosperity)*w.prosperity+(m.value-start.value)*w.value+(m.autonomy-start.autonomy)*w.resilience+(m.mandate-start.mandate)*w.public;
- const total=Math.round(clamp(50+progress*1.15-n.debt*.6-Math.max(0,55-n.environment)*.4));
+ return Math.round(clamp(50+progress*1.15-debt*.6-Math.max(0,55-m.environment)*.4));}
+export function score(s){const n=player(s),m=metrics(s),start=s.start;
+ const total=progressScore(s.countryId,start,m,n.debt);
  const endings=[];const add=(test,type,title,text)=>{if(test)endings.push({type,title,text});};
  add(n.corporate>74,'capture','The company state','Exclusive deals delivered capacity. Corporate power now constrains the government.');
  add(n.mandate<35||n.environment<43,'backlash','The price at home','Industrial ambition eroded the social or environmental foundations beneath it.');

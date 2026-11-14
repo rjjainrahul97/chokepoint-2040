@@ -1,0 +1,17 @@
+{
+  "desktopNodeRender": {
+    "samples": 100,
+    "medianMs": 4.467792999999915,
+    "p95Ms": 9.205285000000003,
+    "maxMs": 24.16539899999998
+  },
+  "scoreHistoryMeanMs": 0.019316590000005362,
+  "payload": {
+    "rawBytes": 179286,
+    "gzipBytes": 60858
+  },
+  "limits": [
+    "Node timings are not mobile-browser timings.",
+    "Gzip totals are local estimates, not a measured network transfer."
+  ]
+}
