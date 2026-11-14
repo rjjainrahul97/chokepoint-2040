@@ -128,7 +128,7 @@ function mature(s,n,notes){const active=[];for(const p of n.projects){
  if(a==='grid'||a==='water')n.environment=clamp(n.environment+5);
  n.completed.push({...p,finished:s.turn+1});notes.push(`${p.label} online${scale<1?` at ${Math.round(scale*100)}% effectiveness (skills gap)`:''}.`);
  }n.projects=active;}
-function supply(n,g){const c=n.caps;const power=clamp((c.energy+30)/(28+c.manufacturing*.4+c.compute*.55+c.refining*.15),.25,1.2);const water=clamp((c.water+25)/(20+c.manufacturing*.25+c.compute*.42+c.refining*.2),.25,1.2);
+export function supply(n,g){const c=n.caps;const power=clamp((c.energy+30)/(28+c.manufacturing*.4+c.compute*.55+c.refining*.15),.25,1.2);const water=clamp((c.water+25)/(20+c.manufacturing*.25+c.compute*.42+c.refining*.2),.25,1.2);
  let x=c[GOOD_CAP[g]];
  if(g==='materials')x=Math.min(c.minerals+25,c.refining)*Math.min(power,water);
  if(g==='equipment')x=c.manufacturing*(.45+n.knowhow/130)*Math.min(power,water);
