@@ -7,3 +7,5 @@
 - Prioritise elective project finance, enforceable scoped contracts, negotiating actors, varied state-driven decisions and warned preventable failures. Follow the plan's causal vertical slice before content/art expansion.
 - Run relevant tests, verify actual browser behaviour before deployment, verify deployed root after deployment, and update durable build evidence. Never claim a planned test passed.
 - Keep private feedback screenshots and personal identifiers out of the public repository. Use original art and fictional representatives.
+
+Current revision: CHOKEPOINT 2035 v2.0 uses schema 4 and 18 turns. Read docs/PRODUCT_REVIEW_V2.md and the newest BUILD_STATE entry before the historical planning records. Preserve legacy-2040/ and its separate save key. Existing *.test.mjs regression files now target engine-legacy.js; modern.test.mjs targets the new engine facade.

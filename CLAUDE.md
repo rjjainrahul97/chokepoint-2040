@@ -9,3 +9,5 @@ Use one deterministic browser JavaScript resolver for actual turns, previews and
 Inspect before changing; test each change; record observed evidence and known gaps. Do not mark planned acceptance tests as passed. Do not copy protected game code/art or upload private feedback screenshots.
 
 Immediate repair note: v1.3 adds elective credit and the thesis/outcome explainer to the current 28-turn game. Fixed-term maturity, new contracts/diplomacy, 18-turn horizon and leadership changes remain pending. Read BUILD_STATE for actual release status. Artwork request and usage: [docs/ART_ASSET_BRIEF.md](docs/ART_ASSET_BRIEF.md); cast: [design/portrait-manifest.json](design/portrait-manifest.json). Do not call requested assets supplied or the broader v2 complete.
+
+Current playability release: CHOKEPOINT 2035 v2.0, 18 turns. Read docs/PRODUCT_REVIEW_V2.md and the latest BUILD_STATE card. The supplied 38 portraits are integrated. The new facade adds encounters/contracts/crises over the retained economic settlement. Keep the 2040 legacy route and both storage keys. Do not report fixed-term debt or a general diplomatic inbox as complete.

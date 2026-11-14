@@ -1,3 +1,23 @@
+# CHOKEPOINT 2035 v2.0
+
+[Play](https://rjjainrahul97.github.io/chokepoint-2040/) · [Continue a 2040 campaign](https://rjjainrahul97.github.io/chokepoint-2040/legacy-2040/)
+
+Can AI-powered R&D improve national sovereignty and prosperity if done right? Lead one of twelve countries through 18 half-years, 2027-2035. Borrow, build, bargain and trade. Discoveries need engineering, useful infrastructure and competitive production to deliver prosperity.
+
+New in this release: supplied cartoon representatives, state-driven briefs, foreign production partnerships with royalties and retained IP, enforceable Atlas exclusivity and buyouts, leadership reviews, conditional failure deadlines and a credit-crisis scenario. Reports put immediate effects and commitments first. Choose which indicator the actual/dotted graph tracks. Existing 2040 saves have their own preserved route.
+
+[Product/design/player review and revision plan](docs/PRODUCT_REVIEW_V2.md) · [Detailed longer-term rules contract](docs/NEXT_VERSION_PLAN.md) · [Build state, evidence and limits](BUILD_STATE.md).
+
+Implementation: deterministic browser JavaScript plus SVG, no runtime library, login, analytics or paid API. Portraits load per active encounter, not as a 38-image preload. Testing: `npm test`; `node tools/modern-sweep.mjs`. The latter records 12 countries x 24 seeds x 11 policies, with per-country CSV evidence.
+
+Known limits: fixed-maturity loans, a general diplomatic inbox and full personal/coalition politics remain future work. Phone-width Chrome tests do not establish physical Safari/Android performance or human enjoyment. See the review for precise implemented rules.
+
+Rollback checkpoint: `rollback/pre-2035-playability` at `b7aeb9328522b0e78c07a4ad9893462b37af4172`. Restore runtime files in a new commit; retain both save keys, portraits and legacy assets.
+
+---
+
+## Historical v1.3 release notes
+
 # CHOKEPOINT 2040 v1.3
 
 [Play the game](https://rjjainrahul97.github.io/chokepoint-2040/)

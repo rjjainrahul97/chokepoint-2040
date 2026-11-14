@@ -1,0 +1,45 @@
+{
+  "campaigns": 3168,
+  "transitions": 57024,
+  "ledgers": 684288,
+  "bestByCountry": {
+    "india": 64,
+    "usa": 73,
+    "china": 64,
+    "germany": 70,
+    "france": 72,
+    "saudi": 63,
+    "uae": 67,
+    "japan": 66,
+    "korea": 66,
+    "australia": 71,
+    "indonesia": 67,
+    "brazil": 68
+  },
+  "scoreWinsOrTies": {
+    "infrastructure": 94,
+    "network": 51,
+    "science": 85,
+    "austerity": 70,
+    "adaptive": 99,
+    "industry": 29,
+    "random": 26,
+    "adversarial": 5
+  },
+  "endings": {
+    "balanced": 1266,
+    "diversification": 1366,
+    "interdependence": 470,
+    "leadership": 4,
+    "research": 27,
+    "substitution": 16,
+    "backlash": 13,
+    "capture": 3,
+    "fragile": 3
+  },
+  "limits": [
+    "Fictional parameters; not economic predictions.",
+    "Policy sweep is evidence of routes and trade-offs, not proof against all exploits.",
+    "Human enjoyment and physical phone timing require external playtests."
+  ]
+}

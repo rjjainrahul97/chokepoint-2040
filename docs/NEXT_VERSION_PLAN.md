@@ -1,3 +1,5 @@
+> Current implementation note: CHOKEPOINT 2035 v2.0 now implements the first playability release. Read [PRODUCT_REVIEW_V2.md](PRODUCT_REVIEW_V2.md) and [BUILD_STATE.md](../BUILD_STATE.md) for shipped rules, evidence and remaining gaps. Historical “not implemented” statements below describe earlier planning states. Fixed-term debt and a general diplomatic system remain future work.
+
 # CHOKEPOINT 2035: next-version goal and game logic
 
 Build ID: CP2035-20261114-RULES  

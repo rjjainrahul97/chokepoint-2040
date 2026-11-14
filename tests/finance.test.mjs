@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
-import {createGame,player,takeTurn,getOptions,choosePolicy,financingQuote,validSave,historyChoice,committedOutlook,score,runWithPolicy} from '../src/engine.js';
+import {createGame,player,takeTurn,getOptions,choosePolicy,financingQuote,validSave,historyChoice,committedOutlook,score,runWithPolicy} from '../src/engine-legacy.js';
 import {previous} from '../src/story.js';
 import {forecast,scoreHistory} from '../src/visuals.js';
 const near=(a,b)=>assert.ok(Math.abs(a-b)<.011,`${a} != ${b}`);

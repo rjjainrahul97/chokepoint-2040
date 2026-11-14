@@ -1,5 +1,6 @@
+import {createGame as createLegacy} from './engine-legacy.js';
 /* Plain-language layer: turns engine numbers into reasons, people and headlines. Reads state only; never changes it. */
-import {COUNTRIES,createGame,takeTurn,player,historyChoice} from './engine.js?v=4.6';
+import {COUNTRIES,createGame,takeTurn,player,historyChoice} from './engine.js?v=5';
 
 export const METRIC={
  prosperity:{icon:'🏠',name:'Living standards',means:'How well off households are'},
@@ -34,7 +35,7 @@ const EFFECTS={
 export function effects(s,o){const n=player(s);
  if(o.id==='royalties')return n.ip?[['+',`+${Math.round(n.ip*1.1*10)/10} budget from ${n.ip} invention${n.ip>1?'s':''}`],['−','Foreign factories make the product']]:[['−','You own no inventions yet: earns nothing']];
  if(o.id==='repay')return n.debt?[['+',`Pays down up to ${Math.round(Math.min(n.cash*.45,n.debt)*10)/10} of debt`],['+','Approval +2'],['−','No new capacity']]:[['−','You have no debt: little effect'],['+','Approval +2']];
- return (EFFECTS[o.id]||[]).map(([tone,text])=>[tone,/^[A-Za-z &]+ \+\d/.test(text)?`Up to ${text.toLowerCase()}`:text]);}
+ return (EFFECTS[o.id]||[['+',o.upside||'Enables a new route'],['−',o.downside||'Costs capital and time']]).map(([tone,text])=>[tone,/^[A-Za-z &]+ \+\d/.test(text)?`Up to ${text.toLowerCase()}`:text]);}
 
 // What ordinary people would notice, per action.
 const FELT={ai:'Students and start-ups will get national compute, once it is built.',research:'Universities hire; the payoff is inventions, not jobs, at first.',pilot:'A test production line gives engineers hands-on process experience.',factory:'A big construction site. Thousands of jobs, if power, water and skills keep up.',imports:'Shops and factories get cheaper parts this year.',diversify:'Prices rise a little while new suppliers are signed up.',partner:'A foreign firm runs the know-how; your workers run the machines.',grid:'Fewer blackouts, once the lines are connected.',water:'Farms and towns get a steadier water supply.',freight:'Less waiting at ports; goods move faster and cheaper.',food:'Grocery bills ease once the harvest and storage are in.',skills:'Engineers stop leaving for jobs abroad.',welfare:'A relief payment lands in household accounts this month.',regulate:'Big platforms must open up; some may sulk.',concede:'Atlas builds fast, but pays little tax for years.',bargain:'Local firms get a share of the technology, not just the jobs.',conserve:'Factories run shorter shifts so homes keep the lights on.',royalties:'Your scientists earn fees; the factories are abroad.',repay:'Less new spending; interest bills shrink.'};
@@ -60,7 +61,7 @@ const PEOPLE={
 export const people=id=>PEOPLE[id].map(([name,role,place],i)=>({name,role,place,face:['👷','🧺','🧑‍🔬','🧑‍🌾'][i]}));
 
 // The state before the last decision, rebuilt by deterministic replay.
-export function previous(s){let p=createGame(s.countryId,s.seed);for(const h of s.history.slice(0,-1))p=takeTurn(p,historyChoice(h));return p;}
+export function previous(s){let p=s.version===4?createGame(s.countryId,s.seed,s.scenario):createLegacy(s.countryId,s.seed);for(const h of s.history.slice(0,-1))p=takeTurn(p,historyChoice(h));return p;}
 
 const r1=x=>Math.round(x*10)/10;
 const top=(list,k=3)=>list.filter(x=>Math.abs(x[1])>=.05).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1])).slice(0,k);

@@ -1,3 +1,24 @@
+# CHOKEPOINT 2035 playability release
+
+Build ID: CP2035-20261114-PLAYABILITY
+Status: IMPLEMENTED / PUBLIC VERIFICATION PENDING
+Ruleset: schema 4, 18 half-years, 2027 H1 through 2035 H2
+Public URL: https://rjjainrahul97.github.io/chokepoint-2040/
+
+[SRC] Baseline b7aeb9328522b0e78c07a4ad9893462b37af4172 included all 38 supplied originals. Created rollback/pre-2035-playability before changes. Originals are preserved; small PNGs load only for active encounters. Product/design/player heuristic review: docs/PRODUCT_REVIEW_V2.md.
+
+[SRC] Implemented: state-ranked non-repeating encounters; capability-based production partnership packages; royalty obligations and foreign IP; real Atlas tender blocks and paid buyout; mandate/representative continuity; conditional fiscal/social/food failure counters and rescue briefs; a credit-crisis scenario; concise reports and selectable actual/conditional indicator tracks. The same settlement runs decisions and forecasts.
+
+[SRC] Legacy regression plus modern tests: 43 passed. Scenario fixtures demonstrate warned credit failure and successful restructuring; contract tests prove blocks and buyouts. Final matrix: 3,168 campaigns, 57,024 transitions and 684,288 government ledger checks. Every country/seed had at least one tested route scoring 50 or higher. Per-country CSVs and balance summary are in test-results/v2/. Public verification is pending. An isolated candidate completed 18 India turns, seed 17, including a JV, successor portrait, save recovery and outcome-card rendering, with no game-source console errors. Narrow client/scroll widths both 305px within a 320px fixture.
+
+[GAP] Fixed maturity, general proactive diplomacy, personal political dispositions and all proposed legal/data clauses remain unimplemented. Parameters are fictional. Physical mobile timing and external human enjoyment are unverified. This release improves playable depth without claiming the complete longer-term design contract is finished.
+
+Rollback: restore prior runtime files from rollback/pre-2035-playability in a new commit. Preserve chokepoint_2035_save_v4 and chokepoint_2040_save_v3 separately. The original 2040 runtime is available at legacy-2040/; no destructive save migration occurs.
+
+---
+
+## Historical build records
+
 # Current release card: elective debt, thesis and cartoon asset brief
 
 Build ID: CP2040-20261114-DEBT-BRIEF

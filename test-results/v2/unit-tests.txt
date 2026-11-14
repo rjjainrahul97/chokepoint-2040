@@ -1,0 +1,56 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> chokepoint-2040@2.0.0 test
+> node --test tests/*.test.mjs
+
+✔ 12 differentiated nations, one shared world and exactly 28 half-years (7.828921ms)
+✔ same seed and same actions reproduce every transition; input states stay immutable (288.442888ms)
+✔ reject unknown, unaffordable, post-horizon and malformed inputs (39.641067ms)
+✔ all countries complete full campaigns under all policy archetypes (5124.942132ms)
+✔ capital reconciles for player and every NPC, including fees, retirement and borrowing (146.504327ms)
+✔ AI assets mature after work completes; no anticipatory production credit (18.996434ms)
+✔ AI-first India without utility investment carries material power and water stress (552.239928ms)
+✔ compute accelerates scientific progress when resources and engineers exist (16.885523ms)
+✔ research, ownership, engineering and commercial value remain distinct (0.571796ms)
+✔ cheap inputs pay immediately, then increase concentration and switching costs (3.08588ms)
+✔ restrictions penalise concentrated sourcing; dependable access can make imports rational (1.799155ms)
+✔ infrastructure lowers production cost and limits operating resource stress (0.324277ms)
+✔ water demand connects compute to farms and food affordability (0.299793ms)
+✔ foreign partnerships deliver earlier while creating actual recurring fees and lock-in (1.960092ms)
+✔ NPC investment, corporate assets and shared prices respond independently (12.078396ms)
+✔ China defends credible competitor capacity and keeps investing in technology (26.601641ms)
+✔ different player investments change actual shared supply and prices (14.754142ms)
+✔ corporations can be constrained; open access has benefits and possible retaliation (13.604554ms)
+✔ late-game choices mature within the horizon and unfinished projects receive no free credit (40.166948ms)
+✔ endings and scores reflect material campaign differences (363.310391ms)
+✔ deficit borrowing becomes principal and subsequent interest is paid from tax-funded cash (1.850675ms)
+✔ over-budget choice borrows only the cash gap after explicit funding request (24.802047ms)
+✔ the reported 7.06 cost and 4.66 cash case can finance its exact 2.40 gap (10.338705ms)
+✔ chosen credit starts interest next half-year and reduces revenue available to spend (11.02133ms)
+✔ funding is finite, quoted without mutation and rejects malformed or unavailable actions (3.064085ms)
+✔ a treasury repayment works outside a scheduled finance card and retires principal (16.343366ms)
+✔ financed campaigns survive save, reload, deterministic replay, histories and forecasts (2137.007805ms)
+✔ old v1.2 campaigns remain byte-equivalent and valid after the finance patch (3491.071909ms)
+✔ 2035 campaigns use varied state-driven briefs, bounded forecast and deterministic saves (1109.774032ms)
+✔ Atlas exclusivity blocks independent tenders and a buyout reopens them (46.883599ms)
+✔ foreign production partnerships create actual rights, fees, capacity and rival price response (15.399885ms)
+✔ failure is warned and restructuring can prevent a credit crisis (11.319139ms)
+✔ mandate shifts change the representative while retaining institutional obligations (27.522419ms)
+✔ credit crisis scenario offers a warned failure and a genuine rescue (10.855415ms)
+✔ credit-crisis progress history includes inherited debt and restructuring (4.924421ms)
+✔ plain-language layer explains every turn for every country without gaps (9504.630034ms)
+✔ visual components render for every country and match engine numbers (1194.322097ms)
+✔ choice previews stay accurate when the same world is replayed differently (8.149456ms)
+✔ historical chart agrees with the actual score at every turn, including debt repayment (7067.407184ms)
+✔ capacity shares include corporate supply and do not promise coercion immunity (4.064877ms)
+✔ warning SVG references are unique and diagnostics do not block cabinet choices (1.220409ms)
+✔ turn graph separates recorded history from a conditional committed-project outlook (115.125453ms)
+✔ outlook is deterministic and stops at 2040 (61.328561ms)
+ℹ tests 43
+ℹ suites 0
+ℹ pass 43
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9818.17258

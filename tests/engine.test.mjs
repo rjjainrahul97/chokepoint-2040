@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {COUNTRIES,ACTIONS,POLICIES,TOTAL_TURNS,createGame,player,getEvent,getOptions,takeTurn,score,runWithPolicy,choosePolicy,productiveState,restrictionExposure,metrics,validSave,halfLabel} from '../src/engine.js';
+import {COUNTRIES,ACTIONS,POLICIES,TOTAL_TURNS,createGame,player,getEvent,getOptions,takeTurn,score,runWithPolicy,choosePolicy,productiveState,restrictionExposure,metrics,validSave,halfLabel} from '../src/engine-legacy.js';
 const near=(a,b,message)=>assert.ok(Math.abs(a-b)<.025,`${message}: ${a} != ${b}`);
 const advance=(s,count,policy='infrastructure')=>{for(let i=0;i<count;i++)s=takeTurn(s,choosePolicy(s,policy));return s;};
 test('12 differentiated nations, one shared world and exactly 28 half-years',()=>{

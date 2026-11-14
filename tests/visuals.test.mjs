@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {COUNTRIES,createGame,takeTurn,choosePolicy,getOptions,score,committedOutlook} from '../src/engine.js?v=4.5';
+import {COUNTRIES,createGame,takeTurn,choosePolicy,getOptions,score,committedOutlook} from '../src/engine-legacy.js?v=4.5';
 import {previewRow,forecast,standing,scoreHistory,loops,loopCard,warnings,worldMap,moatData,moats,aiStack,ladder,trajectory} from '../src/visuals.js';
 test('visual components render for every country and match engine numbers',()=>{
  for(const c of Object.keys(COUNTRIES)){let s=createGame(c,7);
