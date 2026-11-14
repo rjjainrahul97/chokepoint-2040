@@ -1,5 +1,5 @@
 /* Plain-language layer: turns engine numbers into reasons, people and headlines. Reads state only; never changes it. */
-import {COUNTRIES,createGame,takeTurn,player} from './engine.js?v=4.4';
+import {COUNTRIES,createGame,takeTurn,player} from './engine.js?v=4.5';
 
 export const METRIC={
  prosperity:{icon:'🏠',name:'Living standards',means:'How well off households are'},

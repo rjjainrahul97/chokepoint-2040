@@ -1,6 +1,6 @@
 // Renders every visual component: live ones from a real simulated campaign, future ones from sample data.
-import {createGame,takeTurn,choosePolicy,getOptions,COUNTRIES,halfLabel} from '../src/engine.js?v=4.4';
-import {previewRow,standing,loops,loopCard,worldMap,moats,aiStack,ladder} from '../src/visuals.js?v=3.1';
+import {createGame,takeTurn,choosePolicy,getOptions,COUNTRIES,halfLabel} from '../src/engine.js?v=4.5';
+import {previewRow,standing,loops,loopCard,worldMap,moats,aiStack,ladder} from '../src/visuals.js?v=3.2';
 const country=new URL(location.href).searchParams.get('country');
 const id=COUNTRIES[country]?country:'india';
 let s=createGame(id,2040);for(let i=0;i<12;i++)s=takeTurn(s,choosePolicy(s,'adaptive'));
