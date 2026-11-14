@@ -103,4 +103,4 @@ Leverage comes from controlled assets and agreements, not a threatening expressi
 
 Ask the creator to save the eight batch-1 images in your Library with the exact filenames. The manifest makes them findable without relying on chat memory. When available, inspect the actual files, verify identity/transparency/size and permission to use, preserve the originals, make runtime derivatives, add them to GitHub and wire the encounter IDs to those assets. Then test fallback, save/reload, portrait continuity, leadership changes and mobile loading.
 
-This release requests the artwork and records its usage plan. It does **not** claim that portraits or political succession are already live. Debt and the explainer can ship without waiting for art.
+This release requests the artwork and records its usage plan. It does **not** claim that portraits or political succession are already live. Debt and the explainer shipped in v1.3 without waiting for art; see BUILD_STATE for public verification.

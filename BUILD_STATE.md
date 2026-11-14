@@ -1,7 +1,7 @@
 # Current release card: elective debt, thesis and cartoon asset brief
 
 Build ID: CP2040-20261114-DEBT-BRIEF
-Status: CANDIDATE VERIFIED / ROOT DEPLOYMENT PENDING
+Status: DEPLOYED / PUBLIC ROOT VERIFIED
 Version: 1.3 (current 28-turn ruleset; broader 2035 v2 remains pending)
 Public URL: https://rjjainrahul97.github.io/chokepoint-2040/
 
@@ -18,13 +18,15 @@ Public URL: https://rjjainrahul97.github.io/chokepoint-2040/
 
 ## Acceptance and remaining work
 
-[SRC] Candidate snapshot: `1ab280e97e6519dab0fc8c8101de98022818209d`; Pages run `43587493944` SUCCESS. Root release and public acceptance evidence will be recorded after deployment. Existing production root remained untouched during candidate QA.
+[SRC] Candidate snapshot: `1ab280e97e6519dab0fc8c8101de98022818209d`; Pages run `43587493944` SUCCESS. Production release: `bed08a49074ae217a30a902c179ac9f23662538b`; Pages run `43588410634` SUCCESS. Fresh public root loaded `app.js?v=4.7`. Eight deployed runtime files match local hashes (`test-results/v1.3/public-assets.json`). Existing production root remained untouched during candidate QA.
+
+[SRC] Public acceptance: finished a normal-report campaign by resuming a valid v1.2 save after turn 1 and playing the remaining 27 turns, including a loan, turn-14 reload and rendered PNG outcome preview. Then played all 28 turns of a fresh same-world quick replay with optional full financing, a turn-19 reload and a different ending: fiscal exhaustion (30.83 debt, 97.4 production) versus diversification (0 debt, 51.4 production). No game-source console errors. Narrow root layout also had equal client/scroll widths. Final root explainer read back the exact thesis and possible outcomes. Full records: test-results/v1.3/public-browser.json. Three complete campaign histories were exercised across candidate and production, with 83 campaign decisions applied through the UI plus the additional full-credit quick-flow probe.
 
 [GAP] Art is requested, not supplied or integrated. Political/board succession, negotiations, enforced exclusivity, fixed-maturity debt, failure countdowns and CHOKEPOINT 2035/18 turns are still pending in the canonical next-version contract. The current release repairs borrowing and explanation without claiming those broader criteria.
 
 Rollback: `rollback/pre-elective-debt-20261114` -> `69738d4b4e360fc80370682be7d3f8d88aa8f01a`. Restore prior runtime files with a new commit, preserving history, new saves, candidate snapshots and supplied assets. Financed saves need the updated engine; a prior snapshot is retained at the save key plus `_before_v13`. Keep both before any recovery. No paid service, account permission change, runtime AI or new hosting.
 
-Next action: verify deployed root with a full campaign, then update this record. After that, continue the canonical 2035 vertical slice and import portraits when supplied.
+Next action: continue the canonical 2035 vertical slice and import batch-1 portraits when supplied. Current debt/explainer repair is verified; the broader v2 acceptance contract remains open.
 
 ---
 

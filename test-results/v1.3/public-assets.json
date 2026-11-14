@@ -1,0 +1,50 @@
+[
+  {
+    "path": "index.html",
+    "bytes": 1212,
+    "sha256": "3a636f00b6c1f2579dd3fd2fa23afa0ece582644afb3764233e0b46097455bd1",
+    "matchesLocal": true
+  },
+  {
+    "path": "src/app.js?v=4.7",
+    "bytes": 34199,
+    "sha256": "2278427c2872bdad7f484011d9367b5568e592e23b88038b16d2e0bae3bb3853",
+    "matchesLocal": true
+  },
+  {
+    "path": "src/engine.js?v=4.6",
+    "bytes": 40557,
+    "sha256": "48dc01340a926a23c961ff03888facd2ed3d32b14b77ceb205c533d974be831b",
+    "matchesLocal": true
+  },
+  {
+    "path": "src/story.js?v=5.2",
+    "bytes": 16314,
+    "sha256": "db66362b8aef37f3d074a6781fd7baf9d20ad928b14885190ff6ce529a65e2f7",
+    "matchesLocal": true
+  },
+  {
+    "path": "src/visuals.js?v=3.3",
+    "bytes": 16828,
+    "sha256": "cc4ee29348223524f01a58bd3a7018b9580a0e922585b60f7a9f13853c5ca8a3",
+    "matchesLocal": true
+  },
+  {
+    "path": "src/style.css?v=4.6",
+    "bytes": 36261,
+    "sha256": "a4e78cea7b32fd2aaa98f51be88086c5a10033a6b619809c3f5ca1290b18fc62",
+    "matchesLocal": true
+  },
+  {
+    "path": "src/countries.js",
+    "bytes": 3639,
+    "sha256": "54d36bb8a51eda9edd027d8d1b253b5075bc3f71c3e614e377c995a72905e86f",
+    "matchesLocal": true
+  },
+  {
+    "path": "src/map-data.js",
+    "bytes": 48386,
+    "sha256": "1598b13b04b7216566f4f3cdf1579616fc563358448efb8a0662374568662e4e",
+    "matchesLocal": true
+  }
+]
