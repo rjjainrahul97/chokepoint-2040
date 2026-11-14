@@ -1,0 +1,52 @@
+[
+  {
+    "path": "index.html",
+    "sha256": "ee7a0b1d0c1fc113e802f98ad2f1f04529b98bf37f4a99ac506a041141be0423",
+    "matches": true
+  },
+  {
+    "path": "src/countries.js",
+    "sha256": "54d36bb8a51eda9edd027d8d1b253b5075bc3f71c3e614e377c995a72905e86f",
+    "matches": true
+  },
+  {
+    "path": "src/map-data.js",
+    "sha256": "1598b13b04b7216566f4f3cdf1579616fc563358448efb8a0662374568662e4e",
+    "matches": true
+  },
+  {
+    "path": "src/engine.js",
+    "sha256": "f6c8ce4c2061af90f36c6842c236f8751a800d353dc447c7c88a0ddf3c155a9d",
+    "matches": true
+  },
+  {
+    "path": "src/engine-legacy.js",
+    "sha256": "906415bf26c3aad18268e94347f20d3ce58d2e3754654d592b3fe77699c1d3ec",
+    "matches": true
+  },
+  {
+    "path": "src/cast.js",
+    "sha256": "6a70fcd0f6ed6b5a2cc31575f341fe1a283b9c466dd80cb860e986bbc83c4f07",
+    "matches": true
+  },
+  {
+    "path": "src/app.js",
+    "sha256": "c691820829e4e74cc5d61f23214c51dc12280644dc4df68dfc5b3f254776b098",
+    "matches": true
+  },
+  {
+    "path": "src/visuals.js",
+    "sha256": "99c4df01409e0dfd35e6d0b86bb09b4beda40933515c57e543fa5fa0a7035462",
+    "matches": true
+  },
+  {
+    "path": "src/story.js",
+    "sha256": "4b4e95083c6cc38b7e04f314ddbf78f5c97e1787a6c065b0e351f09f9d73d71f",
+    "matches": true
+  },
+  {
+    "path": "src/style.css",
+    "sha256": "b10d878f97cb8ab3e33d3d22595970260631a4e708f414c1b7ddf5390bead359",
+    "matches": true
+  }
+]

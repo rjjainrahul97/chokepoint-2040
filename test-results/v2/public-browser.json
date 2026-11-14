@@ -1,0 +1,67 @@
+{
+  "releaseCommit": "6b2b5e7979d37a39394c1e0e326213fef0333a71",
+  "pagesRun": 43599453682,
+  "pagesConclusion": "success",
+  "publicRoot": "https://rjjainrahul97.github.io/chokepoint-2040/",
+  "campaign": {
+    "country": "india",
+    "seed": 17,
+    "turns": 18,
+    "actions": [
+      "skills",
+      "pilot",
+      "water",
+      "jv",
+      "concede",
+      "exit",
+      "pilot",
+      "diversify",
+      "welfare",
+      "water",
+      "diversify",
+      "food",
+      "concede",
+      "partner",
+      "diversify",
+      "pilot",
+      "skills",
+      "repay"
+    ],
+    "ending": "Sovereign, on borrowed time",
+    "ownedIP": 0,
+    "knowhow": 46,
+    "production": 50.3,
+    "debt": 16.03,
+    "reloadAfterTurn": 9,
+    "partnershipAndBuyoutPlayed": true,
+    "outcomePNGPreviewRendered": true
+  },
+  "graphTrackSwitch": "Independence track selected and returned to overall progress",
+  "portraitLoaded": {
+    "naturalWidth": 512,
+    "path": "assets/portraits/original/company-meridian-a.png"
+  },
+  "narrowLayout": {
+    "fixtureWidth": 320,
+    "clientWidth": 305,
+    "scrollWidth": 305
+  },
+  "creditScenario": {
+    "openingCash": 4,
+    "openingDebt": 40,
+    "firstAction": "repay",
+    "warningAfterFirstSettlement": "1 decision window; critical by 2027 H2 if unchanged",
+    "inaction": "conserve",
+    "failure": "The credit line closes",
+    "sameWorldRecoveryAction": "restructure",
+    "principalRetired": 7.64,
+    "debtAfterRescue": 30.56,
+    "recoveredTo": "2028 H1 / turn 3"
+  },
+  "legacyRoute": "Loaded the preserved 2040 outcome with its existing save, v1.3",
+  "gameSourceConsoleErrors": 0,
+  "limits": [
+    "Phone-width Chrome, not physical mobile performance testing.",
+    "Heuristic persona review and assistant playthroughs are not an external human usability study."
+  ]
+}

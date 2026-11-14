@@ -1,7 +1,7 @@
 # CHOKEPOINT 2035 playability release
 
 Build ID: CP2035-20261114-PLAYABILITY
-Status: IMPLEMENTED / PUBLIC VERIFICATION PENDING
+Status: DEPLOYED / PUBLIC ROOT VERIFIED
 Ruleset: schema 4, 18 half-years, 2027 H1 through 2035 H2
 Public URL: https://rjjainrahul97.github.io/chokepoint-2040/
 
@@ -9,7 +9,9 @@ Public URL: https://rjjainrahul97.github.io/chokepoint-2040/
 
 [SRC] Implemented: state-ranked non-repeating encounters; capability-based production partnership packages; royalty obligations and foreign IP; real Atlas tender blocks and paid buyout; mandate/representative continuity; conditional fiscal/social/food failure counters and rescue briefs; a credit-crisis scenario; concise reports and selectable actual/conditional indicator tracks. The same settlement runs decisions and forecasts.
 
-[SRC] Legacy regression plus modern tests: 43 passed. Scenario fixtures demonstrate warned credit failure and successful restructuring; contract tests prove blocks and buyouts. Final matrix: 3,168 campaigns, 57,024 transitions and 684,288 government ledger checks. Every country/seed had at least one tested route scoring 50 or higher. Per-country CSVs and balance summary are in test-results/v2/. Public verification is pending. An isolated candidate completed 18 India turns, seed 17, including a JV, successor portrait, save recovery and outcome-card rendering, with no game-source console errors. Narrow client/scroll widths both 305px within a 320px fixture.
+[SRC] Legacy regression plus modern tests: 43 passed. Scenario fixtures demonstrate warned credit failure and successful restructuring; contract tests prove blocks and buyouts. Final matrix: 3,168 campaigns, 57,024 transitions and 684,288 government ledger checks. Every country/seed had at least one tested route scoring 50 or higher. Per-country CSVs and balance summary are in test-results/v2/. Public release 6b2b5e7979d37a39394c1e0e326213fef0333a71 deployed through Pages run 43599453682 (SUCCESS). All ten public runtime hashes match the tested release. An isolated candidate completed 18 India turns, seed 17, including a JV, successor portrait, save recovery and outcome-card rendering, with no game-source console errors. Narrow client/scroll widths both 305px within a 320px fixture.
+
+[SRC] Public runtime acceptance: completed all 18 India turns on seed 17 with a production partnership, Atlas concession and buyout, mandate changes, turn-9 reload and rendered outcome-card preview. Switched the indicator graph. Portrait loaded at 512px natural width. At 320px, client/scroll widths both measured 305px. No game-source console errors. In the public credit-crisis scenario, repayment followed by inaction failed exactly at the warned 2027 H2 boundary; replaying with restructuring retired 7.64 principal and continued to turn 3 with debt 30.56. The legacy route freshly loaded the old 2040 save/outcome. Evidence: test-results/v2/public-browser.json and public-assets.json.
 
 [GAP] Fixed maturity, general proactive diplomacy, personal political dispositions and all proposed legal/data clauses remain unimplemented. Parameters are fictional. Physical mobile timing and external human enjoyment are unverified. This release improves playable depth without claiming the complete longer-term design contract is finished.
 
