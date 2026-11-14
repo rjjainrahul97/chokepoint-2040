@@ -1,5 +1,7 @@
 # CHOKEPOINT 2040 v1.2
 
+**Next version: CHOKEPOINT 2035.** [Read the detailed goal, rules and implementation plan](docs/NEXT_VERSION_PLAN.md). The next version targets 18 half-years, elective loans, enforceable deals, negotiated world events, warned failures and persistent characters. This is a planning record; the live v1.2 game has not yet gained these features. Contributor entry points: [Claude](CLAUDE.md) and [agents](AGENTS.md).
+
 [Play the game](https://rjjainrahul97.github.io/chokepoint-2040/)
 
 Reviewed visual release: decision previews, a top-of-turn solid history with dotted conditional outlook, score and rival comparisons, optional warning loops, a world map and production-capacity shares. Existing campaigns and game rules are preserved.

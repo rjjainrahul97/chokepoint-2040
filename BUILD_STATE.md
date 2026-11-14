@@ -1,3 +1,22 @@
+# Next-version build card: CHOKEPOINT 2035
+
+Build ID: CP2035-20261114-RULES
+Status: RULES SPECIFIED / IMPLEMENTATION PENDING
+Date: 14 November 2026
+Canonical contract: [docs/NEXT_VERSION_PLAN.md](docs/NEXT_VERSION_PLAN.md)
+Claude entry point: [CLAUDE.md](CLAUDE.md); repository instructions: [AGENTS.md](AGENTS.md).
+
+- [SRC] Inspected v1.2 at `5cd457918621c99b31846bcc8ea99d5b89b56a42`. Fresh baseline suite: 29/29 tests passed. Low-cash action probe confirms no elective project loan; first card remains identical across tested seeds.
+- [SRC] Current source already has deficit borrowing, interest costs, shared markets, NPC investment and a conditional history graph. Exclusive concessions lack scoped action gates; most foreign events lack negotiable response windows.
+- [ASM] Chosen next target: CHOKEPOINT 2035, 18 half-years, same repository/public URL, pure browser JavaScript. Detailed debt, contracts, diplomacy, failure timers, characters, event selection and release criteria are in the canonical contract.
+- [SRC] This change is documentation only. Current live runtime remains CHOKEPOINT 2040 v1.2. Existing production assets and saves are unchanged.
+- [GAP] No v2 feature or acceptance test is implemented/passed. Country numeric targets, new balance sweep, new browser acceptance and production rollout remain pending.
+- Next action: P1 playable finance/contracts/India-Germany-China vertical slice, then full content, mobile verification and deployment. No new infrastructure is required.
+- Planning checkpoint: `5cd457918621c99b31846bcc8ea99d5b89b56a42`; undo only the planning commit with a new revert commit. Existing production rollback below remains valid.
+- Public feedback is paraphrased; private screenshot and personal contact details are excluded.
+
+---
+
 # Build completion capsule: CHOKEPOINT 2040 v1.2
 
 Build ID: CP2040-20261114-VISUAL-REVIEW
