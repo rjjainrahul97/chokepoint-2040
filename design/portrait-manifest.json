@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "style": "original flat 2D cartoon",
-  "status": "asset request and future integration plan; not a shipped character system",
+  "status": "All 38 original PNG portraits supplied; runtime derivatives and character-system integration not yet shipped",
   "characters": [
     {
       "id": "india-a",
@@ -15,8 +15,9 @@
       "sourceFilename": "country-india-a.png",
       "runtimePath": "assets/portraits/country-india-a.webp",
       "batch": 1,
-      "status": "requested, not supplied",
-      "alt": "Ananya Rao, fictional Industrial renewal envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Ananya Rao, fictional Industrial renewal envoy",
+      "sourcePath": "assets/portraits/original/country-india-a.png"
     },
     {
       "id": "india-b",
@@ -30,8 +31,9 @@
       "sourceFilename": "country-india-b.png",
       "runtimePath": "assets/portraits/country-india-b.webp",
       "batch": 1,
-      "status": "requested, not supplied",
-      "alt": "Kabir Sethi, fictional Household mandate envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Kabir Sethi, fictional Household mandate envoy",
+      "sourcePath": "assets/portraits/original/country-india-b.png"
     },
     {
       "id": "china-a",
@@ -45,8 +47,9 @@
       "sourceFilename": "country-china-a.png",
       "runtimePath": "assets/portraits/country-china-a.webp",
       "batch": 1,
-      "status": "requested, not supplied",
-      "alt": "Lin Yue, fictional Manufacturing strategy envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Lin Yue, fictional Manufacturing strategy envoy",
+      "sourcePath": "assets/portraits/original/country-china-a.png"
     },
     {
       "id": "china-b",
@@ -60,8 +63,9 @@
       "sourceFilename": "country-china-b.png",
       "runtimePath": "assets/portraits/country-china-b.webp",
       "batch": 1,
-      "status": "requested, not supplied",
-      "alt": "Chen Wei, fictional Technology access envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Chen Wei, fictional Technology access envoy",
+      "sourcePath": "assets/portraits/original/country-china-b.png"
     },
     {
       "id": "germany-a",
@@ -75,8 +79,9 @@
       "sourceFilename": "country-germany-a.png",
       "runtimePath": "assets/portraits/country-germany-a.webp",
       "batch": 1,
-      "status": "requested, not supplied",
-      "alt": "Mara Keller, fictional Industrial partnership envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Mara Keller, fictional Industrial partnership envoy",
+      "sourcePath": "assets/portraits/original/country-germany-a.png"
     },
     {
       "id": "germany-b",
@@ -90,8 +95,9 @@
       "sourceFilename": "country-germany-b.png",
       "runtimePath": "assets/portraits/country-germany-b.webp",
       "batch": 1,
-      "status": "requested, not supplied",
-      "alt": "Jonas Berg, fictional Energy and employment envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Jonas Berg, fictional Energy and employment envoy",
+      "sourcePath": "assets/portraits/original/country-germany-b.png"
     },
     {
       "id": "usa-a",
@@ -105,8 +111,9 @@
       "sourceFilename": "country-usa-a.png",
       "runtimePath": "assets/portraits/country-usa-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Elena Brooks, fictional Innovation strategy envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Elena Brooks, fictional Innovation strategy envoy",
+      "sourcePath": "assets/portraits/original/country-usa-a.png"
     },
     {
       "id": "usa-b",
@@ -120,8 +127,9 @@
       "sourceFilename": "country-usa-b.png",
       "runtimePath": "assets/portraits/country-usa-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Daniel Reed, fictional Industrial renewal envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Daniel Reed, fictional Industrial renewal envoy",
+      "sourcePath": "assets/portraits/original/country-usa-b.png"
     },
     {
       "id": "france-a",
@@ -135,8 +143,9 @@
       "sourceFilename": "country-france-a.png",
       "runtimePath": "assets/portraits/country-france-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Camille Laurent, fictional Science and industry envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Camille Laurent, fictional Science and industry envoy",
+      "sourcePath": "assets/portraits/original/country-france-a.png"
     },
     {
       "id": "france-b",
@@ -150,8 +159,9 @@
       "sourceFilename": "country-france-b.png",
       "runtimePath": "assets/portraits/country-france-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Idris Moreau, fictional Public services envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Idris Moreau, fictional Public services envoy",
+      "sourcePath": "assets/portraits/original/country-france-b.png"
     },
     {
       "id": "saudi-a",
@@ -165,8 +175,9 @@
       "sourceFilename": "country-saudi-a.png",
       "runtimePath": "assets/portraits/country-saudi-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Noura Al-Hadi, fictional Diversification envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Noura Al-Hadi, fictional Diversification envoy",
+      "sourcePath": "assets/portraits/original/country-saudi-a.png"
     },
     {
       "id": "saudi-b",
@@ -180,8 +191,9 @@
       "sourceFilename": "country-saudi-b.png",
       "runtimePath": "assets/portraits/country-saudi-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Faisal Darwish, fictional Water and public investment envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Faisal Darwish, fictional Water and public investment envoy",
+      "sourcePath": "assets/portraits/original/country-saudi-b.png"
     },
     {
       "id": "uae-a",
@@ -195,8 +207,9 @@
       "sourceFilename": "country-uae-a.png",
       "runtimePath": "assets/portraits/country-uae-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Salma Al-Mansoor, fictional Trade and logistics envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Salma Al-Mansoor, fictional Trade and logistics envoy",
+      "sourcePath": "assets/portraits/original/country-uae-a.png"
     },
     {
       "id": "uae-b",
@@ -210,8 +223,9 @@
       "sourceFilename": "country-uae-b.png",
       "runtimePath": "assets/portraits/country-uae-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Omar Rashid, fictional Resilience envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Omar Rashid, fictional Resilience envoy",
+      "sourcePath": "assets/portraits/original/country-uae-b.png"
     },
     {
       "id": "japan-a",
@@ -225,8 +239,9 @@
       "sourceFilename": "country-japan-a.png",
       "runtimePath": "assets/portraits/country-japan-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Aiko Mori, fictional Equipment partnership envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Aiko Mori, fictional Equipment partnership envoy",
+      "sourcePath": "assets/portraits/original/country-japan-a.png"
     },
     {
       "id": "japan-b",
@@ -240,8 +255,9 @@
       "sourceFilename": "country-japan-b.png",
       "runtimePath": "assets/portraits/country-japan-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Kenji Sato, fictional Essential inputs envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Kenji Sato, fictional Essential inputs envoy",
+      "sourcePath": "assets/portraits/original/country-japan-b.png"
     },
     {
       "id": "korea-a",
@@ -255,8 +271,9 @@
       "sourceFilename": "country-korea-a.png",
       "runtimePath": "assets/portraits/country-korea-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Seo Min-jun, fictional Advanced manufacturing envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Seo Min-jun, fictional Advanced manufacturing envoy",
+      "sourcePath": "assets/portraits/original/country-korea-a.png"
     },
     {
       "id": "korea-b",
@@ -270,8 +287,9 @@
       "sourceFilename": "country-korea-b.png",
       "runtimePath": "assets/portraits/country-korea-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Han Ji-eun, fictional Industrial resilience envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Han Ji-eun, fictional Industrial resilience envoy",
+      "sourcePath": "assets/portraits/original/country-korea-b.png"
     },
     {
       "id": "australia-a",
@@ -285,8 +303,9 @@
       "sourceFilename": "country-australia-a.png",
       "runtimePath": "assets/portraits/country-australia-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Grace Tan, fictional Processing partnership envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Grace Tan, fictional Processing partnership envoy",
+      "sourcePath": "assets/portraits/original/country-australia-a.png"
     },
     {
       "id": "australia-b",
@@ -300,8 +319,9 @@
       "sourceFilename": "country-australia-b.png",
       "runtimePath": "assets/portraits/country-australia-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Liam Hayes, fictional Regional infrastructure envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Liam Hayes, fictional Regional infrastructure envoy",
+      "sourcePath": "assets/portraits/original/country-australia-b.png"
     },
     {
       "id": "indonesia-a",
@@ -315,8 +335,9 @@
       "sourceFilename": "country-indonesia-a.png",
       "runtimePath": "assets/portraits/country-indonesia-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Dewi Pranata, fictional Value-chain envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Dewi Pranata, fictional Value-chain envoy",
+      "sourcePath": "assets/portraits/original/country-indonesia-a.png"
     },
     {
       "id": "indonesia-b",
@@ -330,8 +351,9 @@
       "sourceFilename": "country-indonesia-b.png",
       "runtimePath": "assets/portraits/country-indonesia-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Arif Santoso, fictional Community and transport envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Arif Santoso, fictional Community and transport envoy",
+      "sourcePath": "assets/portraits/original/country-indonesia-b.png"
     },
     {
       "id": "brazil-a",
@@ -345,8 +367,9 @@
       "sourceFilename": "country-brazil-a.png",
       "runtimePath": "assets/portraits/country-brazil-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Luisa Costa, fictional Productive investment envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Luisa Costa, fictional Productive investment envoy",
+      "sourcePath": "assets/portraits/original/country-brazil-a.png"
     },
     {
       "id": "brazil-b",
@@ -360,8 +383,9 @@
       "sourceFilename": "country-brazil-b.png",
       "runtimePath": "assets/portraits/country-brazil-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Rafael Nunes, fictional Household and freight envoy"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Rafael Nunes, fictional Household and freight envoy",
+      "sourcePath": "assets/portraits/original/country-brazil-b.png"
     },
     {
       "id": "aster-a",
@@ -375,8 +399,9 @@
       "sourceFilename": "company-aster-a.png",
       "runtimePath": "assets/portraits/company-aster-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Morgan Vale, fictional Aster Cloud chief executive"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Morgan Vale, fictional Aster Cloud chief executive",
+      "sourcePath": "assets/portraits/original/company-aster-a.png"
     },
     {
       "id": "aster-b",
@@ -390,8 +415,9 @@
       "sourceFilename": "company-aster-b.png",
       "runtimePath": "assets/portraits/company-aster-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Priya Sen, fictional Aster Cloud successor"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Priya Sen, fictional Aster Cloud successor",
+      "sourcePath": "assets/portraits/original/company-aster-b.png"
     },
     {
       "id": "meridian-a",
@@ -405,8 +431,9 @@
       "sourceFilename": "company-meridian-a.png",
       "runtimePath": "assets/portraits/company-meridian-a.webp",
       "batch": 1,
-      "status": "requested, not supplied",
-      "alt": "Emi Takeda, fictional Meridian Machines chief executive"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Emi Takeda, fictional Meridian Machines chief executive",
+      "sourcePath": "assets/portraits/original/company-meridian-a.png"
     },
     {
       "id": "meridian-b",
@@ -420,8 +447,9 @@
       "sourceFilename": "company-meridian-b.png",
       "runtimePath": "assets/portraits/company-meridian-b.webp",
       "batch": 1,
-      "status": "requested, not supplied",
-      "alt": "Luca Marin, fictional Meridian Machines successor"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Luca Marin, fictional Meridian Machines successor",
+      "sourcePath": "assets/portraits/original/company-meridian-b.png"
     },
     {
       "id": "helix-a",
@@ -435,8 +463,9 @@
       "sourceFilename": "company-helix-a.png",
       "runtimePath": "assets/portraits/company-helix-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Victor Shen, fictional Helix Materials chief executive"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Victor Shen, fictional Helix Materials chief executive",
+      "sourcePath": "assets/portraits/original/company-helix-a.png"
     },
     {
       "id": "helix-b",
@@ -450,8 +479,9 @@
       "sourceFilename": "company-helix-b.png",
       "runtimePath": "assets/portraits/company-helix-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Amara Okoye, fictional Helix Materials successor"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Amara Okoye, fictional Helix Materials successor",
+      "sourcePath": "assets/portraits/original/company-helix-b.png"
     },
     {
       "id": "bluewave-a",
@@ -465,8 +495,9 @@
       "sourceFilename": "company-bluewave-a.png",
       "runtimePath": "assets/portraits/company-bluewave-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Leila Haddad, fictional BlueWave Freight chief executive"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Leila Haddad, fictional BlueWave Freight chief executive",
+      "sourcePath": "assets/portraits/original/company-bluewave-a.png"
     },
     {
       "id": "bluewave-b",
@@ -480,8 +511,9 @@
       "sourceFilename": "company-bluewave-b.png",
       "runtimePath": "assets/portraits/company-bluewave-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Mateo Silva, fictional BlueWave Freight successor"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Mateo Silva, fictional BlueWave Freight successor",
+      "sourcePath": "assets/portraits/original/company-bluewave-b.png"
     },
     {
       "id": "grainvault-a",
@@ -495,8 +527,9 @@
       "sourceFilename": "company-grainvault-a.png",
       "runtimePath": "assets/portraits/company-grainvault-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Ines Duarte, fictional GrainVault chief executive"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Ines Duarte, fictional GrainVault chief executive",
+      "sourcePath": "assets/portraits/original/company-grainvault-a.png"
     },
     {
       "id": "grainvault-b",
@@ -510,8 +543,9 @@
       "sourceFilename": "company-grainvault-b.png",
       "runtimePath": "assets/portraits/company-grainvault-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Samuel Adeyemi, fictional GrainVault successor"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Samuel Adeyemi, fictional GrainVault successor",
+      "sourcePath": "assets/portraits/original/company-grainvault-b.png"
     },
     {
       "id": "northgrid-a",
@@ -525,8 +559,9 @@
       "sourceFilename": "company-northgrid-a.png",
       "runtimePath": "assets/portraits/company-northgrid-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Tariq Malik, fictional NorthGrid Energy chief executive"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Tariq Malik, fictional NorthGrid Energy chief executive",
+      "sourcePath": "assets/portraits/original/company-northgrid-a.png"
     },
     {
       "id": "northgrid-b",
@@ -540,8 +575,9 @@
       "sourceFilename": "company-northgrid-b.png",
       "runtimePath": "assets/portraits/company-northgrid-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Sofia Anders, fictional NorthGrid Energy successor"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Sofia Anders, fictional NorthGrid Energy successor",
+      "sourcePath": "assets/portraits/original/company-northgrid-b.png"
     },
     {
       "id": "atlas-a",
@@ -555,8 +591,9 @@
       "sourceFilename": "company-atlas-a.png",
       "runtimePath": "assets/portraits/company-atlas-a.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Dev Mehta, fictional Atlas Industries chair"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Dev Mehta, fictional Atlas Industries chair",
+      "sourcePath": "assets/portraits/original/company-atlas-a.png"
     },
     {
       "id": "atlas-b",
@@ -570,8 +607,10 @@
       "sourceFilename": "company-atlas-b.png",
       "runtimePath": "assets/portraits/company-atlas-b.webp",
       "batch": 2,
-      "status": "requested, not supplied",
-      "alt": "Maya Fernandes, fictional Atlas Industries successor"
+      "status": "source-supplied-runtime-not-integrated",
+      "alt": "Maya Fernandes, fictional Atlas Industries successor",
+      "sourcePath": "assets/portraits/original/company-atlas-b.png"
     }
-  ]
+  ],
+  "assetHandoffPath": "assets/portraits/original/ASSET_HANDOFF.json"
 }
