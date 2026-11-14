@@ -1,0 +1,146 @@
+{
+  "campaign": "India AI-first, normal reports",
+  "seed": 2040,
+  "decisions": [
+    {
+      "turn": 1,
+      "action": "ai"
+    },
+    {
+      "turn": 2,
+      "action": "factory",
+      "pointCount": 3
+    },
+    {
+      "turn": 3,
+      "action": "imports",
+      "pointCount": 4
+    },
+    {
+      "turn": 4,
+      "action": "ai",
+      "pointCount": 5
+    },
+    {
+      "turn": 5,
+      "action": "conserve",
+      "pointCount": 6
+    },
+    {
+      "turn": 6,
+      "action": "repay",
+      "pointCount": 7
+    },
+    {
+      "turn": 7,
+      "action": "imports",
+      "pointCount": 8
+    },
+    {
+      "turn": 8,
+      "action": "welfare",
+      "pointCount": 9
+    },
+    {
+      "turn": 9,
+      "action": "imports",
+      "pointCount": 10
+    },
+    {
+      "turn": 10,
+      "action": "imports",
+      "pointCount": 11
+    },
+    {
+      "turn": 11,
+      "action": "royalties",
+      "pointCount": 12
+    },
+    {
+      "turn": 12,
+      "action": "welfare",
+      "pointCount": 13
+    },
+    {
+      "turn": 13,
+      "action": "conserve",
+      "pointCount": 14
+    },
+    {
+      "turn": 14,
+      "action": "conserve",
+      "pointCount": 15
+    },
+    {
+      "turn": 15,
+      "action": "conserve",
+      "pointCount": 16
+    },
+    {
+      "turn": 16,
+      "action": "welfare",
+      "pointCount": 17
+    },
+    {
+      "turn": 17,
+      "action": "conserve",
+      "pointCount": 18
+    },
+    {
+      "turn": 18,
+      "action": "conserve",
+      "pointCount": 19
+    },
+    {
+      "turn": 19,
+      "action": "concede",
+      "pointCount": 20
+    },
+    {
+      "turn": 20,
+      "action": "conserve",
+      "pointCount": 21
+    },
+    {
+      "turn": 21,
+      "action": "royalties",
+      "pointCount": 22
+    },
+    {
+      "turn": 22,
+      "action": "imports",
+      "pointCount": 23
+    },
+    {
+      "turn": 23,
+      "action": "conserve",
+      "pointCount": 24
+    },
+    {
+      "turn": 24,
+      "action": "conserve",
+      "pointCount": 25
+    },
+    {
+      "turn": 25,
+      "action": "royalties",
+      "pointCount": 26
+    },
+    {
+      "turn": 26,
+      "action": "royalties",
+      "pointCount": 27
+    },
+    {
+      "turn": 27,
+      "action": "royalties",
+      "pointCount": 28
+    },
+    {
+      "turn": 28,
+      "action": "royalties",
+      "pointCount": 29
+    }
+  ],
+  "loanWitness": "Debt outstanding: 2.66\n\nTax revenue 3.99 − interest 0.09 = 3.9 before other bills.\n\nBorrowed 0.05 this half-year to cover a cash deficit. Debt costs 3.5% each half-year. Next period’s interest at the current balance: 0.09.\n\nBorrowing covers unpaid bills automatically. It is not tax income or an upfront loan option for unaffordable projects."
+}

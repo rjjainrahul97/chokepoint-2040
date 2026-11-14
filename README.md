@@ -1,4 +1,12 @@
-# CHOKEPOINT 2040
+# CHOKEPOINT 2040 v1.2
+
+[Play the game](https://rjjainrahul97.github.io/chokepoint-2040/)
+
+Reviewed visual release: decision previews, a top-of-turn solid history with dotted conditional outlook, score and rival comparisons, optional warning loops, a world map and production-capacity shares. Existing campaigns and game rules are preserved.
+
+The dotted path assumes **no new player choices**: queued projects, bills, research and autonomous world events continue for up to six half-years, ending at 2040. It is conditional, not guaranteed. Borrowing automatically covers cash deficits; interest is deducted from the tax-funded budget. There is no upfront loan option for unaffordable projects.
+
+Review, tests, assumptions and limits: [v1.2 review](docs/V1_2_REVIEW.md). Rollback: `rollback/pre-v1.2-20261114` at `31c7b77819ef97e74d36751c36b22f2ee0ce48ec`.
 
 **Own tomorrow. Pay for today.** A free, mobile-first geopolitical strategy game about sovereign AI, industrial capability and the cost of independence.
 

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {COUNTRIES,createGame,takeTurn,choosePolicy,getOptions} from '../src/engine.js?v=4.4';
+import {COUNTRIES,createGame,takeTurn,choosePolicy,getOptions} from '../src/engine.js?v=4.5';
 import {why,vignettes,headline,relevance,advice,effects,previous} from '../src/story.js?v=5.1';
 test('plain-language layer explains every turn for every country without gaps',()=>{
  for(const c of Object.keys(COUNTRIES))for(const p of ['random','adaptive','imports','science']){let s=createGame(c,99);while(s.turn<28){for(const o of getOptions(s))assert.ok(effects(s,o).length,`${o.id} has effects`);assert.ok(advice(s).length);const b=s;s=takeTurn(s,choosePolicy(s,p));
