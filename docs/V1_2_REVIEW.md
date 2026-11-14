@@ -61,3 +61,8 @@ Evidence: `test-results/v1.2/`, `test-results/visual-performance.json`, `test-re
 With the requested conditional outlook, the locally estimated complete gzip payload is about 63 KB, versus about 38 KB for live v1.1. No runtime library or remote asset added. Desktop Node render benchmark including three previews and the six-period outlook: median about 11 ms, p95 about 24 ms. These are not physical-phone or network timings.
 
 Deployment and final root-site readback are recorded in BUILD_STATE.md. The preview snapshot remains isolated under review-v12/ as a reproducible acceptance fixture.
+
+
+## Public deployment verification
+
+Merged release e51996876711f2db0dbea9a3372c072b8d3ba037 deployed successfully through existing Pages configuration, run 43580227322. The exact root URL loaded app.js?v=4.5. A third full browser campaign, China seed 17, completed all 28 decisions on the public game and restored correctly after a mid-game reload. Root phone fixture showed the solid/dotted graph correctly. No game-source console errors observed. Public source readback and hashes are recorded in test-results/v1.2/public-assets.json.

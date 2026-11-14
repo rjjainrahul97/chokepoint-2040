@@ -1,0 +1,44 @@
+[
+  {
+    "path": "index.html",
+    "matches": true,
+    "bytes": 1212,
+    "sha256": "3359486fe257ba13ba63e0a188e37719cf703b61618d5495be2c44b375e9d6ab"
+  },
+  {
+    "path": "src/app.js",
+    "matches": true,
+    "bytes": 28510,
+    "sha256": "6b5f49317b20964e49f09a216d2654416caee552f00a461777109dbe5e0405a7"
+  },
+  {
+    "path": "src/engine.js",
+    "matches": true,
+    "bytes": 37883,
+    "sha256": "044b7098ad9d844805cacd176900539d68ba395355d410bba5686618e6a28617"
+  },
+  {
+    "path": "src/story.js",
+    "matches": true,
+    "bytes": 16022,
+    "sha256": "8dc09a1fd8ae3484f56d664ec97f85348d73eeb2782d4eb76f5fc776c26d8215"
+  },
+  {
+    "path": "src/visuals.js",
+    "matches": true,
+    "bytes": 16772,
+    "sha256": "b1ddefccbc6f4ec068f882bf7b8c1ef5dad1a32c67ad6c8167b55d596baa93a5"
+  },
+  {
+    "path": "src/style.css",
+    "matches": true,
+    "bytes": 34573,
+    "sha256": "71eeb674faa8c00a97dcc7b9b2edf9d006996aa9b5431b134c46a871e31b2eea"
+  },
+  {
+    "path": "src/map-data.js",
+    "matches": true,
+    "bytes": 48386,
+    "sha256": "1598b13b04b7216566f4f3cdf1579616fc563358448efb8a0662374568662e4e"
+  }
+]

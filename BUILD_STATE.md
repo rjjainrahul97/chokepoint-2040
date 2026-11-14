@@ -1,7 +1,7 @@
 # Build completion capsule: CHOKEPOINT 2040 v1.2
 
 Build ID: CP2040-20261114-VISUAL-REVIEW
-Status: CANDIDATE VERIFIED / MERGING TO PUBLIC ROOT
+Status: DEPLOYED / PUBLIC ROOT VERIFIED
 Date: 14 November 2026 (India)
 Public URL: https://rjjainrahul97.github.io/chokepoint-2040/
 
@@ -34,7 +34,11 @@ Review and evidence: `docs/V1_2_REVIEW.md`, `test-results/v1.2/`, `test-results/
 
 Rollback by restoring game files from `rollback/pre-v1.2-20261114` in a new main commit; preserve history and save keys. No server migration is required.
 
-Final public deployment verification: pending the merge below; update after the root-site smoke test.
+[SRC] Merged release: `e51996876711f2db0dbea9a3372c072b8d3ba037`. GitHub Pages run [43580227322](https://github.com/rjjainrahul97/chokepoint-2040/actions/runs/43580227322) completed SUCCESS.
+
+[SRC] Opened the exact public root URL after deployment; it loaded `src/app.js?v=4.5` and the new graph. Completed all 28 China turns on seed 17 on the public root, including a successful reload after turn 14 (15 history points). This is the third full browser campaign in this review, after two candidate campaigns. No game-source console errors were observed. Captured the phone graph using the deployed root assets. The public root was left ready to review.
+
+[SRC] Final asset readback and hashes are in `test-results/v1.2/public-assets.json`; public campaign actions are in `test-results/v1.2/live-campaign.json`. Documentation-only closure does not change the tested product modules.
 
 ---
 
