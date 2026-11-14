@@ -1,3 +1,45 @@
+# Build completion capsule: CHOKEPOINT 2040 v1.2
+
+Build ID: CP2040-20261114-VISUAL-REVIEW
+Status: CANDIDATE VERIFIED / MERGING TO PUBLIC ROOT
+Date: 14 November 2026 (India)
+Public URL: https://rjjainrahul97.github.io/chokepoint-2040/
+
+## Scope and inspected state
+
+[SRC] Reviewed Claude's visual-system-v1.2 at `1c262da544bb098a9b8b7d3523d32a0f98602a85` against main `31c7b77819ef97e74d36751c36b22f2ee0ce48ec`. Preserved Claude's visual and storytelling improvements; added only corrections and the user's subsequent turn-graph/debt-visibility requirements.
+
+[SRC] Rollback created: `rollback/pre-v1.2-20261114`, commit `31c7b77819ef97e74d36751c36b22f2ee0ce48ec`. The original Claude branch remains preserved. No paid service, new runtime dependency, credential exposure or permission change.
+
+## Changes and verification
+
+- [SRC] Fixed forecast-cache contamination across different replays. History charts use recorded changes and the shared score formula rather than replaying the whole campaign.
+- [SRC] Restored exact financial precision, corrected corporate supply denominators, removed unsupported coercion-immunity claims, fixed duplicate SVG marker IDs and removed duplicated CSS.
+- [SRC] Added top-of-turn actual progress plus a dotted, conditional committed-project outlook. It uses the actual settlement engine on clones, assumes no new player policy, includes world actors and running bills, and stops at 2040.
+- [SRC] Verified automatic deficit borrowing and interest servicing. Reports explicitly show tax revenue less interest, outstanding principal and next-period servicing at the current balance. Upfront project borrowing is not implemented; that existing affordability rule is unchanged.
+- [SRC] 29/29 tests passed, including replay isolation, historical-score equality, project outlook, saves, debt, horizon and immutability checks.
+- [SRC] 1,128 complete simulations, 31,584 transitions and 354,816 government ledger checks passed. Underlying campaign results match the prior simulation.
+- [SRC] Two full mobile browser campaigns passed on the isolated candidate: normal reports and a differently played quick replay; graph lengths, mid-game reload, changed outcomes and PNG preview checked. No game-source console errors.
+- [SRC] 390px and 320px layouts fit. The final 2040 report has 29 historical points and no dotted future beyond the horizon.
+- [SRC] Actual UI borrowing witness: debt 2.66; taxes 3.99; interest 0.09; tax receipts net of servicing 3.90; new deficit borrowing 0.05.
+- [SRC] About 63 KB locally estimated gzip payload, zero runtime libraries. Desktop Node render including three option previews and six-step outlook: median about 11 ms, p95 about 24 ms. Physical old-phone timings are unverified.
+
+Review and evidence: `docs/V1_2_REVIEW.md`, `test-results/v1.2/`, `test-results/visual-performance.json`, `test-results/balance.json`.
+
+## Limits, recovery and deployment
+
+[GAP] Physical iOS/Safari, Android and old-phone performance remain untested. Human pacing/enjoyment remain open. Dotted paths are conditional scenarios, not probable outcomes. The AI-stack and sovereignty-ladder examples are labelled design-only and are not shown as campaign facts.
+
+[SRC] Local headless Chromium still fails on process socket permissions; actual shared Chrome tested real Pages modules in a phone-sized frame. Candidate snapshots are retained under review-v12/; production root was unchanged during acceptance.
+
+Rollback by restoring game files from `rollback/pre-v1.2-20261114` in a new main commit; preserve history and save keys. No server migration is required.
+
+Final public deployment verification: pending the merge below; update after the root-site smoke test.
+
+---
+
+## Archived v1.0 build record
+
 # Build completion capsule: CHOKEPOINT 2040 v1.0
 
 Build ID: **CP2040-20261113-REBUILD**

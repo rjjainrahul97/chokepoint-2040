@@ -128,7 +128,7 @@ function mature(s,n,notes){const active=[];for(const p of n.projects){
  if(a==='grid'||a==='water')n.environment=clamp(n.environment+5);
  n.completed.push({...p,finished:s.turn+1});notes.push(`${p.label} online${scale<1?` at ${Math.round(scale*100)}% effectiveness (skills gap)`:''}.`);
  }n.projects=active;}
-function supply(n,g){const c=n.caps;const power=clamp((c.energy+30)/(28+c.manufacturing*.4+c.compute*.55+c.refining*.15),.25,1.2);const water=clamp((c.water+25)/(20+c.manufacturing*.25+c.compute*.42+c.refining*.2),.25,1.2);
+export function supply(n,g){const c=n.caps;const power=clamp((c.energy+30)/(28+c.manufacturing*.4+c.compute*.55+c.refining*.15),.25,1.2);const water=clamp((c.water+25)/(20+c.manufacturing*.25+c.compute*.42+c.refining*.2),.25,1.2);
  let x=c[GOOD_CAP[g]];
  if(g==='materials')x=Math.min(c.minerals+25,c.refining)*Math.min(power,water);
  if(g==='equipment')x=c.manufacturing*(.45+n.knowhow/130)*Math.min(power,water);
@@ -224,10 +224,10 @@ function setShocks(s){s.world.shocks={};const phase=hash(`${s.seed}:climate-phas
 export function metrics(s){const n=player(s);const autonomy=clamp(100-n.concentration*.48-n.lockin*.25-n.restrictionLoss*.35+n.diversification*.3);
  return {prosperity:round(n.prosperity),value:round(n.captured),autonomy:round(autonomy),mandate:round(n.mandate),environment:round(n.environment)};}
 export function dependency(s){const n=player(s);return Object.entries(GOODS).map(([id,name])=>{const m=s.world.markets[id];return {id,name,controller:m.controller,price:m.price,fill:m.fill,domestic:round(n.caps[GOOD_CAP[id]]),risk:round(clamp(id==='materials'?n.concentration+n.lockin*.2-n.diversification*.5:100-n.caps[GOOD_CAP[id]]+n.lockin*.12)),substitute:id==='materials'?'Recycle, diversify, process at home':id==='cloud'?'Open models, domestic compute':id==='equipment'?'Pilot engineering, shared licences':'Infrastructure or alternative imports'};});}
-export function takeTurn(original,choiceId){
- if(original.turn>=28)throw Error('Game already finished');const opts=getOptions(original);const opt=opts.find(x=>x.id===choiceId);if(!opt||!opt.available)throw Error('Choice unavailable');
+function advanceTurn(original,choiceId,hold=false){
+ if(original.turn>=28)throw Error('Game already finished');const opts=getOptions(original);const opt=opts.find(x=>x.id===choiceId);if(!hold&&(!opt||!opt.available))throw Error('Choice unavailable');
  const s=clone(original),n=player(s),opening=n.cash,before=metrics(s),beforeMarkets=clone(s.world.markets);const notes=[];
- const r=enact(s,n,choiceId);const receipts=choiceId==='royalties'?round(n.cash-(opening-r.cost)):0;
+ const r=hold?{action:'hold',cost:0,option:{title:'Maintain committed plans',duration:0},message:'No new discretionary policy.',dependency:''}:enact(s,n,choiceId);if(hold)n.policy.push({turn:s.turn,id:'hold'});const receipts=choiceId==='royalties'?round(n.cash-(opening-r.cost)):0;
  const shock=setShocks(s);const countries=moveGovernments(s),companies=moveFirms(s);
  for(const x of Object.values(s.world.nations))mature(s,x,x.id===s.countryId?notes:[]);
  clearMarkets(s);
@@ -238,12 +238,24 @@ export function takeTurn(original,choiceId){
  const after=metrics(s);const delta=Object.fromEntries(Object.keys(before).map(k=>[k,round(after[k]-before[k])]));
  const news=[...countries,...companies];s.world.news=news;
  const changed=Object.keys(GOODS).sort((a,b)=>Math.abs(s.world.markets[b].price-beforeMarkets[b].price)-Math.abs(s.world.markets[a].price-beforeMarkets[a].price))[0];
- const result={turn:s.turn,half:halfLabel(s.turn),event:getEvent(original).title,action:choiceId,choice:r.option.title,domestic:r.message||`${r.option.title}: ${r.option.duration?'capital committed; construction has begun.':'policy took effect.'}`,dependency:r.dependency,notes,shock,delta,stress:clone(n.stress),ledger:clone(n.ledger),countries,companies,global:`${GOODS[changed]} price ${beforeMarkets[changed].price.toFixed(2)} → ${s.world.markets[changed].price.toFixed(2)}×; supply ${s.world.markets[changed].supply}, demand ${s.world.markets[changed].demand}.`,later:n.projects.map(p=>({label:p.label,due:p.due})),output:n.output,unitCost:n.unitCost,ip:n.ip,captured:n.captured};
+ const result={turn:s.turn,half:halfLabel(s.turn),event:hold?'Committed-plan outlook':getEvent(original).title,action:hold?'hold':choiceId,choice:r.option.title,domestic:r.message||`${r.option.title}: ${r.option.duration?'capital committed; construction has begun.':'policy took effect.'}`,dependency:r.dependency,notes,shock,delta,stress:clone(n.stress),ledger:clone(n.ledger),countries,companies,global:`${GOODS[changed]} price ${beforeMarkets[changed].price.toFixed(2)} → ${s.world.markets[changed].price.toFixed(2)}×; supply ${s.world.markets[changed].supply}, demand ${s.world.markets[changed].demand}.`,later:n.projects.map(p=>({label:p.label,due:p.due})),output:n.output,unitCost:n.unitCost,ip:n.ip,captured:n.captured};
  s.history.push(result);s.lastResult=result;s.turn++;return s;
 }
-export function score(s){const n=player(s),m=metrics(s),start=s.start;const w=COUNTRIES[s.countryId].weights;
+export function takeTurn(original,choiceId){return advanceTurn(original,choiceId);}
+// Conditional projection only: let queued projects, upkeep and the seeded world run,
+// with no new player investments, subsidies, rationing or debt repayments.
+// Virtual states never enter a saved campaign or its history.
+export function committedOutlook(original,halves=6){const points=[];let s=original;
+ const count=Math.max(0,Math.min(8,Math.floor(halves)));
+ for(let i=0;i<count&&s.turn<TOTAL_TURNS;i++){const completed=player(s).completed.length;s=advanceTurn(s,null,true);const n=player(s);points.push({turn:s.turn,score:score(s).total,metrics:metrics(s),debt:n.debt,cash:n.cash,interest:n.ledger.interest,tax:n.ledger.tax,completed:n.completed.slice(completed).map(p=>p.label)});}
+ return points;}
+
+// One scoring rule for the outcome and the read-only historical chart.
+export function progressScore(countryId,start,m,debt=0){const w=COUNTRIES[countryId].weights;
  const progress=(m.prosperity-start.prosperity)*w.prosperity+(m.value-start.value)*w.value+(m.autonomy-start.autonomy)*w.resilience+(m.mandate-start.mandate)*w.public;
- const total=Math.round(clamp(50+progress*1.15-n.debt*.6-Math.max(0,55-n.environment)*.4));
+ return Math.round(clamp(50+progress*1.15-debt*.6-Math.max(0,55-m.environment)*.4));}
+export function score(s){const n=player(s),m=metrics(s),start=s.start;
+ const total=progressScore(s.countryId,start,m,n.debt);
  const endings=[];const add=(test,type,title,text)=>{if(test)endings.push({type,title,text});};
  add(n.corporate>74,'capture','The company state','Exclusive deals delivered capacity. Corporate power now constrains the government.');
  add(n.mandate<35||n.environment<43,'backlash','The price at home','Industrial ambition eroded the social or environmental foundations beneath it.');

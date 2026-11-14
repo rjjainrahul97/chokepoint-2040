@@ -1,0 +1,37 @@
+{
+  "desktopNodeRender": {
+    "samples": 100,
+    "medianMs": 4.467792999999915,
+    "p95Ms": 9.205285000000003,
+    "maxMs": 24.16539899999998
+  },
+  "scoreHistoryMeanMs": 0.019316590000005362,
+  "payload": {
+    "rawBytes": 179286,
+    "gzipBytes": 60858
+  },
+  "limits": [
+    "Node timings are not mobile-browser timings.",
+    "Gzip totals are local estimates, not a measured network transfer."
+  ],
+  "coldLoadComparison": {
+    "case": "Cold late-game score and option rendering after loading a campaign at turn 24; 30 different scenario seeds",
+    "before": {
+      "medianMs": 42.50530800000024,
+      "p95Ms": 139.2361460000002
+    },
+    "after": {
+      "medianMs": 5.183039000000008,
+      "p95Ms": 15.728295000000116
+    },
+    "limits": "Desktop Node, no DOM painting, not a measured old-phone speedup."
+  },
+  "finalWithConditionalOutlook": {
+    "samples": 30,
+    "medianMs": 10.787995999999907,
+    "p95Ms": 24.095156999999972,
+    "rawBytes": 186997,
+    "gzipBytes": 63135,
+    "scope": "Desktop Node, three option previews, six-half-year outlook and standing. No network/DOM painting or phone throttling."
+  }
+}

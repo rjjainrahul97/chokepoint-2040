@@ -74,3 +74,9 @@ test('late-game choices mature within the horizon and unfinished projects receiv
 test('endings and scores reflect material campaign differences',()=>{
  const all=Object.keys(POLICIES).map(p=>score(runWithPolicy('india',2040,p)));assert.ok(new Set(all.map(x=>x.total)).size>=5);assert.ok(new Set(all.map(x=>x.ending.type)).size>=3);assert.ok(all.some(x=>x.ending.type==='research'));
 });
+
+test('deficit borrowing becomes principal and subsequent interest is paid from tax-funded cash',()=>{
+ let s=createGame('india',2040);const n=player(s);n.cash=0;n.debt=10;n.caps.compute=100;n.caps.labs=100;n.caps.energy=15;n.caps.water=10;n.caps.food=10;
+ s=takeTurn(s,'conserve');const l=player(s).ledger;assert.equal(l.interest,.35);assert.ok(l.borrowing>0);near(player(s).debt,10+l.borrowing,'principal increases by borrowing');near(l.closing,l.opening-l.spending-l.other+l.tax+l.receipts+l.borrowing,'tax and borrowing settle bills');
+ s=takeTurn(s,'conserve');const next=player(s).ledger;assert.ok(next.interest>.35);near(next.interest,Math.round((10+l.borrowing)*.035*100)/100,'interest on outstanding debt');assert.ok(next.other>=next.interest);
+});

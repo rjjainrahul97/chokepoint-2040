@@ -1,10 +1,27 @@
-# CHOKEPOINT 2040
+# CHOKEPOINT 2040 v1.2
+
+[Play the game](https://rjjainrahul97.github.io/chokepoint-2040/)
+
+Reviewed visual release: decision previews, a top-of-turn solid history with dotted conditional outlook, score and rival comparisons, optional warning loops, a world map and production-capacity shares. Existing campaigns and game rules are preserved.
+
+The dotted path assumes **no new player choices**: queued projects, bills, research and autonomous world events continue for up to six half-years, ending at 2040. It is conditional, not guaranteed. Borrowing automatically covers cash deficits; interest is deducted from the tax-funded budget. There is no upfront loan option for unaffordable projects.
+
+Review, tests, assumptions and limits: [v1.2 review](docs/V1_2_REVIEW.md). Rollback: `rollback/pre-v1.2-20261114` at `31c7b77819ef97e74d36751c36b22f2ee0ce48ec`.
 
 **Own tomorrow. Pay for today.** A free, mobile-first geopolitical strategy game about sovereign AI, industrial capability and the cost of independence.
 
 [Play the game](https://rjjainrahul97.github.io/chokepoint-2040/)
 
 Choose one of 12 countries. Govern for 28 half-years from 2027 H1 to 2040 H2. Each cabinet brief offers three policies. Build, trade, negotiate, regulate, commercialise research or protect households. Other countries and seven fictional corporate groups operate in the same world.
+
+## What's new in v1.2: visual system
+
+- Choice preview: dots on each option show how much each score moves this half-year, computed by running the real engine.
+- Where you stand: an "if the game ended now" score against the 50 no-change line, plus each score against your 2027 start, the rival average, your rank of 12 and the approval danger zone.
+- Warning signs: power, debt and dependency spirals drawn as cause loops when two or more conditions are true, each with a way to break it.
+- World map in every consequence report: relations, your main supplier and active export controls.
+- Moats: your share of world supply for each good against the top holders.
+- Design reference at `design/visuals.html`: every pattern, the game it is borrowed from, and previews of the AI stack and sovereignty ladder planned for phase 2.
 
 ## What's new in v1.1: readable consequences
 
@@ -49,6 +66,8 @@ The balance harness writes `test-results/balance.json` and `test-results/campaig
 | `src/countries.js` | Preserved 12 country profiles and national objective weights |
 | `src/engine.js` | Pure state transition, projects, discovery work, production, budgets, markets, government utilities, firm policies, outcomes and replay validation |
 | `src/story.js` | Plain-language layer: metric reasons, citizen vignettes, headlines, adviser notes. Read-only over state |
+| `src/visuals.js` | Visual components (preview, standing, spirals, world map, moats, AI stack, ladder). HTML/SVG strings, no libraries |
+| `src/map-data.js` | Generated world map paths (Natural Earth via world-atlas, public domain). Rebuild with `tools/make-map.mjs` |
 | `src/app.js` | Country selection, cabinet decisions, consequence briefings, optional systems view, saves and sharing |
 | `src/style.css` | Responsive phone-first interface, keyboard focus and reduced-motion support |
 | `tools/balance.mjs` | Country/seed/policy sweeps and state/accounting invariants |
